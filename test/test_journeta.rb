@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper.rb'
 
-class TestJourneta < Test::Unit::TestCase
+class TestJournetaEngine < Test::Unit::TestCase
 
   def setup
   end
