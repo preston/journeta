@@ -4,6 +4,7 @@ Manifest.txt
 README.txt
 Rakefile
 lib/journeta.rb
+examples/instant_messenger.rb
 lib/journeta/logger.rb
 lib/journeta/version.rb
 lib/journeta/asynchronous.rb
@@ -13,6 +14,7 @@ lib/journeta/event_broadcaster.rb
 lib/journeta/event_listener.rb
 lib/journeta/presence_message.rb
 lib/journeta/peer_registry.rb
+lib/journeta/peer_connection.rb
 lib/journeta/journeta_engine.rb
 scripts/txt2html
 setup.rb
