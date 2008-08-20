@@ -38,16 +38,16 @@
     <h2>Ruby <span class="caps">P2P</span> for your <span class="caps">LAN</span>, yo.</h2>
 
 
-	<p>Journeta is a library for passing objects between automatically discovered and connected Ruby applications on a <span class="caps">LAN</span>.</p>
+	<p>Journeta is a dirt simple library for peer discovery and message passing between Ruby applications on a <span class="caps">LAN</span>.</p>
 
 
 	<h2>Peers</h2>
 
 
-	<p>A &#8220;peer&#8221; is represented by a &#8220;start&#8221;ed instance of JournetaEngine in your Ruby application. You&#8217;ll probably want just one, but may run more if it makes sense for your application to logically represent two (or more) peers simultaneously.</p>
+	<p>A &#8220;peer&#8221; is represented by a &#8220;start&#8221;ed instance of JournetaEngine in your Ruby application. You&#8217;ll probably want just one, but may run more if it makes sense for your application to logically represent two (or more) peers simultaneously, or want to run multiple instances on the same machine.</p>
 
 
-	<p>Any object that can be serialized via <span class="caps">YAML</span> can be sent and received by Journeta. Received messages (a.k.a. objects defined by your application sent from a peer) are passed into a message handler you define, in an event-based manner. Messages do not come from your applications main thread.</p>
+	<p>Any object that can be serialized via <span class="caps">YAML</span> can be sent and received by Journeta. Received messages (a.k.a. objects defined by your application sent from a peer running the same code) are passed into a message handler you provide in an event-based manner. Messages do not come from your applications main thread!</p>
 
 
 	<h2>Journeta Is Simple Because It Doesn&#8217;t..</h2>
@@ -69,7 +69,9 @@
 	<h2>The Basics</h2>
 
 
-	<p>Several annotated code snippets can be found in the &#8220;examples&#8221; directory of the gem. Open two consoles, and run this script (it comes with the gem) on each. You should see messages on each console showing received presence events. Hit [enter] in one consoles to shut down the peer, and look for an event message in the other. Sweeeeet.</p>
+	<p>Several annotated code snippets can be found in the &#8220;examples&#8221; directory of the gem. Open two (or more) consoles and run and following on each for a completely decentralized, zero-configuration-required chat server.
+	<pre syntax="ruby">ruby examples/instant_messenger.rb</pre>
+	Sweeeeet.</p>
 
 
 	<p>Email <a href="mailto:preston.lee@openrain.com">Preston Lee</a> and read the blog.</p>
