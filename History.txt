@@ -1,4 +1,11 @@
+== 0.0.2 2008-08-19
+
+* First working RubyForge release:
+  * See README.txt for general info.
+  * Adding functional chat room example. (See examples/)
+
 == 0.0.1 2007-07-25
 
-* 1 major enhancement:
-  * Initial release
+* Initial release:
+  * Basic port from original Java code.
+  * NOT YET FUNCTIONAL!
