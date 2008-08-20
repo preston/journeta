@@ -9,9 +9,9 @@ requiring no advanced networking knowledge to use.
 Only core Ruby libraries are required, making the library fairly light. As all data is sent accross
 the wire in YAML form, any arbitrary Ruby object can be sent to peers, provided they..
 
- * Are running a compatible Journeta version, and
+ * Are running a compatible Journeta version.
  * Have access to the same class definitions if you are sending your own custom objects.
- * Do not have a firewall preventing
+ * Do not have a firewall preventing network I/O.
 
 Journeta uses Ruby threading to manage the asynchonous nature of peer-to-peer I/O.
 For insight into events internal to the library, start ruby with the `--debug` options.
