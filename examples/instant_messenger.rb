@@ -4,7 +4,6 @@ lib_path = File.join(current_dir, '..', 'lib')
 $LOAD_PATH.unshift lib_path
 
 require 'journeta'
-
 include Journeta
 
 # We start by defining a message handler to print messages received

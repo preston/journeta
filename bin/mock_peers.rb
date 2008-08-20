@@ -6,23 +6,21 @@ $LOAD_PATH.unshift lib_path
 require 'journeta'
 include Journeta
 
+
 COUNT = 5
 puts "Creating #{COUNT} mock peers."
-
 instances = []
-
 for i in 1..COUNT
-  n = JournetaEngine.new
+  n = JournetaEngine.new(:session_port => (12345 + i))
   instances.push n
   n.start
 end
 
+
 puts "Hit <ENTER> to stop all #{COUNT} peer instances exit."
 gets
-
 instances.each do |i|
   i.stop
 end
 
 puts "All instances stopped. Exiting..."
-exit 0

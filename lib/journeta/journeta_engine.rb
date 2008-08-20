@@ -1,4 +1,5 @@
 # Copyright © 2007 OpenRain, LLC. All rights reserved.
+#
 # Preston Lee <preston.lee@openrain.com>
 
 
@@ -7,17 +8,20 @@ module Journeta
   class JournetaEngine
     
     include Logger
-    
-    # Constantly listens for incoming peer sessions
-    attr_accessor :session_listener
-    # Application logic which processes session data.
-    attr_accessor :session_handler
+
     # Continuously sends out "i'm here" presence messages to the local network
     attr_accessor :event_broadcaster
     # continuously listens for "i'm here" presence messages from other peers
     attr_accessor :event_listener
+
+    # Constantly listens for incoming peer sessions
+    attr_accessor :session_listener
+    # Application logic which processes session data.
+    attr_accessor :session_handler
+
     # Authoritative peer availability database.
     attr_accessor :peer_registry
+
     # Instance-specific configuration which may be overriden at initialization time by the application
     attr_reader :configuration
 
