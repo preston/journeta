@@ -1,0 +1,31 @@
+h1. Journeta
+
+h2. Ruby P2P for your LAN, yo.
+
+Journeta is a library for passing objects between automatically discovered and connected Ruby applications on a LAN.
+
+h2. Peers
+
+A "peer" is represented by a "start"ed instance of JournetaEngine in your Ruby application. You'll probably want just one, but may run more if it makes sense for your application to logically represent two (or more) peers simultaneously.
+
+Any object that can be serialized via YAML can be sent and received by Journeta. Received messages (a.k.a. objects defined by your application sent from a peer) are passed into a message handler you define, in an event-based manner. Message do not come from your applications main thread.
+
+h2. Journeta Is Simple Because It Doesn't..
+
+<ol>
+<li><b>Work outside the LAN</b>. Presence broadcasts don't propagate to the internet, and there is no such thing as a "server" in Journeta.</li>
+<li><b>Attempt to be secure</b>, as all network messages are sent in text. Messages from peers are implicitly trusted for truthiness.</li>
+<li><b>Solve Ruby's threading issues</b>, nor dictate your applications thread handling design. Until Ruby uses native threads, high-performance uses of Journeta will likely be limited. Remember that stuff sent to your message handler is not coming from your applications main thread.</li>
+<li><b>Provide backwards compatibility</b>, or for the matter, compatibility with anything other than peers of the same Journeta version. No formal messaging specifications here. Different versions of Journeta may or may not be protocol compatible; we don't know and we don't keep track.</li>
+<li><b>Guarantee message delivery</b>, since UDP is used for some types of communications, and peers are free to go down at any time.</li>
+</ol>
+
+h2. Installing
+
+<pre syntax="ruby">sudo gem install journeta</pre>
+
+h2. The Basics
+
+Several annotated code snippets can be found in the "examples" directory of the gem. Open two consoles, and run this script (it comes with the gem) on each. You should see messages on each console showing received presence events. Hit <enter> in one consoles to shut down the peer, and look for an event message in the other. Sweeeeet.
+
+Email "Preston Lee":mailto:preston.lee@openrain.com and read the blog.
