@@ -1,11 +1,13 @@
 module Journeta
-   
-   class SessionHandler
-   
-      def init
-         putsd 'Sessions handler initialized.\n'
-      end
-   
-   end
-
+  
+  class DefaultSessionHandler
+    
+    include Logger
+    
+    def handle(message)
+      putsd("New message received! #{message}")
+    end
+    
+  end
+  
 end
