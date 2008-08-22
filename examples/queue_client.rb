@@ -23,7 +23,7 @@ journeta.start
 
 
 # Keep creating random jobs.
-puts "CTRL-C to exit."
+puts "Don't forget to start a server at some point! CTRL-C to exit this client."
 while true
   num = rand(1024)
   puts "Creating random job ##{num}."

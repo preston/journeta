@@ -30,7 +30,7 @@ stop_on_shutdown(journeta)
 journeta.start
 
 
-puts "CTRL-C to stop server."
+puts "Start multiple peers to see the server doing stuff! CTRL-C to stop this server. "
 total = 0
 while true
   job = @queue.pop
