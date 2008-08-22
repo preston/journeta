@@ -28,7 +28,8 @@ class ExampleHandler < Journeta::DefaultPeerHandler
 end
 
 # Now we'll create an instance of the Journeta P2P engine.
-# We'll change the default incoming session port to a
+#
+# :peer_port -- We'll change the default incoming session port to a
 # pseudo-randomly generated number so multiple instances
 # may be started on the same machine.
 #
@@ -36,15 +37,18 @@ end
 # (1) you intend to run multiple peers on the same machine, or
 # (2) the default port (Journeta::JournetaEngine::DEFAULT_PEER_PORT)
 #     is otherwise already taken on your machine.
+#
+# :peer_handler -- A piece of logic you must specify to process objects sent to you from peers.
+# :groups -- Defines the peer types which care about the objects you broadcast. (Optional: by default, all peers will receive all your object broadcasts.)
 peer_port = (2048 + rand( 2 ** 8))
-journeta = Journeta::JournetaEngine.new(:peer_port => peer_port, :peer_handler => ExampleHandler.new, :groups => ['im_demo'])
+journeta = Journeta::JournetaEngine.new(:peer_port => peer_port, :peer_handler => ExampleHandler.new, :groups => ['im_example'])
 
 
 # Let the magic begin!
 journeta.start
 
 
-# You can use the following helper to automatically stop the when the application is killed with CTRL-C etc.
+# You can use the following helper to automatically stop the given engine when the application is killed with CTRL-C.
 include Journeta::Common::Shutdown
 stop_on_shutdown(journeta)
 
