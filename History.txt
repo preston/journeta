@@ -1,7 +1,8 @@
 == 0.0.3 2008-08-21
 
-* Added 'groups' support to avoid peer message spamming.
-* Enhancements to examples.
+* Added peer 'groups' support to avoid peer message spamming.
+* Major refactoring to make outbound messages sent asynchonously to the sending thread.
+* Example and documentation updates.
 * Shared network queue example added!
   * examples/queue_client.rb
   * examples/queue_server.rb
