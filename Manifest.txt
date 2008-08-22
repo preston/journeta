@@ -18,7 +18,9 @@ lib/journeta/presence_broadcaster.rb
 lib/journeta/presence_listener.rb
 lib/journeta/presence_message.rb
 lib/journeta/journeta_engine.rb
+lib/journeta/common/dummy_peer_handler.rb
 lib/journeta/common/job.rb
+lib/journeta/common/shutdown.rb
 scripts/txt2html
 setup.rb
 test/test_journeta.rb
