@@ -4,14 +4,16 @@ module Journeta
       
       attr_accessor :version
       attr_accessor :uuid
-      attr_accessor :session_port
-      attr_accessor :online
+      attr_accessor :peer_port
       
-      def initialize(uuid, session_port, online = true)
+      # An Array of strings. May be empty but not nil. Ex: ['quick_chat', 'Preston Demo 1']
+      attr_accessor :groups
+      
+      def initialize(uuid, peer_port, groups = [])
          @version = Journeta::VERSION::STRING
          @uuid = uuid
-         @session_port = session_port
-         @online = online
+         @peer_port = peer_port
+         @groups = groups
       end
       
    end

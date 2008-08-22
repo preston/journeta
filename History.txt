@@ -1,3 +1,14 @@
+== 0.0.3 2008-08-21
+
+* Added 'groups' support to avoid peer message spamming.
+* Enhancements to examples.
+* Shared network queue example added!
+  * examples/queue_client.rb
+  * examples/queue_server.rb
+* Renaming..
+  * Session -> Peer
+  * Event -> Presence
+
 == 0.0.2 2008-08-19
 
 * First working RubyForge release:

@@ -10,10 +10,10 @@ module Journeta
   class EventListener < Journeta::Asynchronous
     
     
-    def go #(engine)
-      event_address = @engine.configuration[:event_address]
-      port = @engine.configuration[:event_port]
-      addresses =  IPAddr.new(event_address).hton + IPAddr.new("0.0.0.0").hton
+    def go
+      presence_address = @engine.presence_address
+      port = @engine.presence_port
+      addresses =  IPAddr.new(presence_address).hton + IPAddr.new("0.0.0.0").hton
       begin
         socket = UDPSocket.new
         # Remember how i said this was fucked up? yeaahhhhhh. i hope you like C.
@@ -29,18 +29,17 @@ module Journeta
           data, meta = socket.recvfrom 1024
           Thread.new(data) {
             event = YAML.load(data)
-            if event.uuid != @engine.configuration[:uuid]
-#              putsd "New Event: #{data} #{meta.inspect}"
-              # Update registry
+            if event.uuid != @engine.uuid
               m = YAML::load(data)
-              peer = PeerConnection.new
-#              require 'pp'
-#              pp m
+              peer = PeerConnection.new @engine
               # Why is this always [2]? Not sure.. they should have returned a hash instead.
               peer.ip_address = meta[2]
-              peer.session_port = m.session_port
+              peer.peer_port = m.peer_port
               peer.uuid = m.uuid
               peer.version = m.version
+              peer.groups = m.groups
+              # TODO validate peer entry is sane before registering it
+#              peer.start
               @engine.register_peer peer
             end
           }

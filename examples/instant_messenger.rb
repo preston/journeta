@@ -17,9 +17,13 @@ end
 
 # A message handler will be called by the engine every time a message is received.
 # This code will be customized for your application-specific needs.
-class ExampleHandler < Journeta::DefaultSessionHandler
+class ExampleHandler < Journeta::DefaultPeerHandler
   def handle(message)
-    puts "#{message.name.chop}: #{message.text}"
+    if message.class == ExampleMessage
+      puts "#{message.name.chop}: #{message.text}"
+    else
+      putsd("Unsupported message type received from peer. (#{message})")
+    end
   end
 end
 
@@ -30,14 +34,24 @@ end
 #
 # You'll need to find an unused port if..
 # (1) you intend to run multiple peers on the same machine, or
-# (2) the default port (Journeta::JournetaEngine::DEFAULT_SESSION_PORT)
+# (2) the default port (Journeta::JournetaEngine::DEFAULT_PEER_PORT)
 #     is otherwise already taken on your machine.
-session_port = (2048 + rand( 2 ** 8))
-journeta = Journeta::JournetaEngine.new(:session_port => session_port, :session_handler => ExampleHandler.new)
+peer_port = (2048 + rand( 2 ** 8))
+journeta = Journeta::JournetaEngine.new(:peer_port => peer_port, :peer_handler => ExampleHandler.new, :groups => ['im_demo'])
 
 
 # Let the magic begin!
 journeta.start
+
+
+# You can use the following helper to automatically stop the when the application is killed with CTRL-C etc.
+include Journeta::Common::Shutdown
+stop_on_shutdown(journeta)
+
+# Alternatively, you can stop the engine manually by calling +JournetaEngine#stop+.
+# Do this before exiting to broadcast a message stating you are going offline as a courtesy to your peers, like so..
+# @journeta.stop
+
 
 puts "What's your name?"
 name = gets
@@ -58,20 +72,19 @@ end
 # Sit around are watch events at the console until the user hits <enter>
 puts 'Text you enter here will automatically be shown on peers terminals.'
 begin
-   loop do
+  loop do
+    begin
       input = gets
       m = ExampleMessage.new
       m.name = name
       m.text = input
       journeta.send_to_known_peers(m)
-   end
-ensure
+    end
+  end  
 end
 
-# Please stop the engine when shutting down. This broadcasts a message
-# stating you are going offline as a courtesy to your peers.
-journeta.stop
+
 
 # The engine can be restarted and stopped as many times as you'd like.
-journeta.start
-journeta.stop
+#journeta.start
+#journeta.stop

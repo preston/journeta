@@ -5,87 +5,111 @@
 
 module Journeta
   
+  # The primary fascade of the entire +Journeta+ library, which composite a number of objects that may or may not have code running asynchronously to the primary application +Thread+.
   class JournetaEngine
     
     include Logger
-
-    # Continuously sends out "i'm here" presence messages to the local network
-    attr_accessor :event_broadcaster
-    # continuously listens for "i'm here" presence messages from other peers
-    attr_accessor :event_listener
-
-    # Constantly listens for incoming peer sessions
-    attr_accessor :session_listener
-    # Application logic which processes session data.
-    attr_accessor :session_handler
-
-    # Authoritative peer availability database.
-    attr_accessor :peer_registry
-
-    # Instance-specific configuration which may be overriden at initialization time by the application
-    attr_reader :configuration
-
-    # The universally-unique ID of this instance.
+    
+    # A supposedly universally unique id for this instance.
     attr_reader :uuid
     
-    @@DEFAULT_SESSION_PORT = 31338
-    @@DEFAULT_EVENT_PORT = 31337
-    @@DEFAULT_SESSION_HANDLER = DefaultSessionHandler.new
+    # An array of peer network names. Ex: ['OpenRain Test', 'quick_chat_app']
+    # An empty array indicates implicit membership in all discovered groups.
+    attr_reader :groups
+    
+    
+    # Continuously sends out "i'm here" presence messages to the local network
+    attr_reader :presence_broadcaster
+    
+    # continuously listens for "i'm here" presence messages from other peers
+    attr_reader :presence_listener
+    
+    # The UDP port for event broadcast messages.
+    attr_reader :presence_port
+    
+    # The UDP network address used for broadcast messages.
+    attr_reader :presence_address
+    
+    # The amount of time between presence broadcasts.
+    attr_reader :presence_period
+    
+    
+    
+    # Constantly listens for incoming peer sessions
+    attr_reader :peer_listener
+    
+    # Application logic which processes session data.
+    attr_reader :peer_handler
+    
+    # The TCP port used to receive direct peer messages.
+    attr_reader :peer_port
+    
+    # Authoritative peer availability database.
+    attr_reader :peer_registry
+    
+    
+    
+    
+    
+    # Incoming direct peer TCP connections will use this port.
+    @@DEFAULT_PEER_PORT = 31338
+    
+    # The application message callback handler.
+    @@DEFAULT_PEER_HANDLER = DefaultPeerHandler.new
+    
+    @@DEFAULT_PRESENCE_PORT = 31337
     
     # Addresses 224.0.0.0 through 239.255.255.255 are reserved for multicast messages.
-    @@DEFAULT_EVENT_NETWORK = '224.220.221.222'
-    @@DEFAULT_EVENT_PERIOD = 4
+    @@DEFAULT_PRESENCE_NETWORK = '224.220.221.222'
+    
+    # The wait time, in seconds, between rebroadcasts of peer presence.
+    @@DEFAULT_PRESENCE_PERIOD = 4
     
     
     def initialize(configuration ={})
       putsd "CON: #{configuration}"
-      @configuration = Hash.new
       
-      # A supposedly universally unique id for this instance. not technically gauranteed but close enough for now.
       # TODO make guaranteed to be unique.
-      @configuration[:uuid] = configuration[:uuid] || rand(2 ** 31)
-      # the tcp port to use for direct peer connections
-      @configuration[:session_port] = configuration[:session_port] || @@DEFAULT_SESSION_PORT
-
-      @session_handler = configuration[:session_handler] || @@DEFAULT_SESSION_HANDLER
+      @uuid = configuration[:uuid] || rand(2 ** 31)
+      @groups = configuration[:groups]
       
-      # The UDP port for event broadcast messages.
-      @configuration[:event_port] = configuration[:event_port] || @@DEFAULT_EVENT_PORT
-
-      # The UDP network address used for broadcast messages.
-      @configuration[:event_address] = configuration[:event_address] || @@DEFAULT_EVENT_NETWORK
-
-      # The delay, in seconds, between presence notification broadcasts.
-      @configuration[:event_period] = configuration[:event_period] || @@DEFAULT_EVENT_PERIOD
       
-      # Initialize sub-components.
-      @session_listener = Journeta::SessionListener.new self
-      @event_listener = EventListener.new self
-      @event_broadcaster = EventBroadcaster.new self
+      @peer_port = configuration[:peer_port] || @@DEFAULT_PEER_PORT
+      @peer_handler = configuration[:peer_handler] || @@DEFAULT_PEER_HANDLER
+      @peer_listener = Journeta::PeerListener.new self
+      
+      @presence_port = configuration[:presence_port] || @@DEFAULT_PRESENCE_PORT    
+      @presence_address = configuration[:presence_address] || @@DEFAULT_PRESENCE_NETWORK      
+      @presence_period = configuration[:presence_period] || @@DEFAULT_PRESENCE_PERIOD
+      @presence_listener = EventListener.new self
+      @presence_broadcaster = EventBroadcaster.new self
+      
       @peer_registry = PeerRegistry.new self
     end
     
     def start
-      # start a session listener first so we don't risk missing a connection attempt
-      putsd "Starting #{@session_listener.class.to_s}"
-      @session_listener.start
+      # Start a peer listener first so we don't risk missing a connection attempt.
+      putsd "Starting #{@peer_listener.class.to_s}"
+      @peer_listener.start
       
-      # start listening for peer events
-      putsd "Starting #{@event_listener.class.to_s}"
-      @event_listener.start
+      # Start listening for presence events.
+      putsd "Starting #{@presence_listener.class.to_s}"
+      @presence_listener.start
       
-      # start sending our own events
-      putsd "Starting #{@event_broadcaster.class.to_s}"
-      @event_broadcaster.start
+      # Start sending our own presence events!
+      putsd "Starting #{@presence_broadcaster.class.to_s}"
+      @presence_broadcaster.start
     end
     
     def stop
-      # stop broadcasting events
-      @event_broadcaster.stop
-      # stop listener for events
-      @event_listener.stop
-      # stop listening for incoming peer sessions
-      @session_listener.stop
+      # Stop broadcasting presence.
+      @presence_broadcaster.stop
+      # Stop listening for presence events, which prevents new peer registrations
+      @presence_listener.stop
+      # Stop listening for incoming peer data.
+      @peer_listener.stop
+      # Forcefull terminate all connections, which may be actively passing data.
+      @peer_registry.unregister_all
     end
     
     def send_to_known_peers(payload)
@@ -100,13 +124,17 @@ module Journeta
     
     # Returns metadata on all known peers in a hash, keyed by the uuid of each.
     # A record corresponding to this peer is not included.
-    def known_peers()
-      peer_registry.peers # FIXME Returns objects outside of synchronized context.
+    def known_peers(all_groups = false)
+      peer_registry.all(all_groups)
     end
     
     # Adds (or updates) the given +PeerConnection+.
     def register_peer(peer)
-      peer_registry.add(peer)
+      peer_registry.register(peer)
+    end
+    
+    def unregister_peer(peer)
+      peer_registry.unregister(peer)
     end
     
   end

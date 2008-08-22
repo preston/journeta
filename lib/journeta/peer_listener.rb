@@ -2,11 +2,11 @@ require 'socket'
 
 module Journeta
   
-  class SessionListener < Journeta::Asynchronous
+  class PeerListener < Journeta::Asynchronous
     
-    def go #(engine)
+    def go
       begin
-        port = engine.configuration[:session_port]
+        port = @engine.peer_port
         socket = TCPServer.new(port) 
         putsd "Listening on port #{port}"
         
@@ -21,7 +21,7 @@ module Journeta
               end
 #              pp data
               msg     = YAML::load(data)
-              h = @engine.session_handler
+              h = @engine.peer_handler
               h.handle msg              
             end
           end

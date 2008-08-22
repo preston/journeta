@@ -1,6 +1,6 @@
 module Journeta
   
-  class DefaultSessionHandler
+  class DefaultPeerHandler
     
     include Logger
     
