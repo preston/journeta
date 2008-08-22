@@ -6,9 +6,11 @@ require 'journeta/peer_connection'
 
 module Journeta
   
-  # uses the fucked up socket api to listen for events broadcast from peers
-  class EventListener < Journeta::Asynchronous
-    
+  # Uses the fucked up Ruby socket API (which isn't really an API)
+  # to listen for presence broadcast from peers. Processing of the
+  # inbound data is quickly delegated to a background thread to allow the listener
+  # to continue responding to inbound traffic as fast as possible.
+  class EventListener < Journeta::Asynchronous    
     
     def go
       presence_address = @engine.presence_address
@@ -43,8 +45,14 @@ module Journeta
               peer.uuid = m.uuid
               peer.version = m.version
               peer.groups = m.groups
+              
+              # We should not start the #PeerConnection before registering because
+              # the peer might already be registered. In this case, we'd have wasted a thread,
+              # so we'll let the registry handle startup (if it happens at all.)
+              #
+              # peer.start
+              
               # TODO validate peer entry is sane before registering it
-#              peer.start
               @engine.register_peer peer
             end
           }

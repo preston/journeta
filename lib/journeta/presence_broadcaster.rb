@@ -4,7 +4,9 @@ require 'journeta/asynchronous'
 
 
 module Journeta
-  
+
+  # Spams the local area network with metadata about the local instance.
+  # This allows peers to make direct connections back at a later time.
   class EventBroadcaster < Journeta::Asynchronous
     
     attr_accessor :thread

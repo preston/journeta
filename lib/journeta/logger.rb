@@ -3,9 +3,10 @@
 
 module Journeta
    
+   # A silly logging implementation intended for internal use only. Nothing to see here!
    module Logger
       
-      # a thread safe method for printing the given string if and only if debugging is enabled
+      # A thread safe method for printing the given string if and only if debugging is enabled.
       def putsd(message = '(no message)')
          $stderr.print("DEBUG: #{message}\n") if $DEBUG
       end

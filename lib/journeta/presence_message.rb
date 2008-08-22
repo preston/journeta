@@ -1,5 +1,7 @@
 module Journeta
    
+   # A built-in data structure which gets broadcast across the network
+   # for meta-data exchange purposes. A no-frills PORO.
    class PresenceMessage
       
       attr_accessor :version

@@ -2,10 +2,16 @@
 #
 # Preston Lee <preston.lee@openrain.com>
 
-
+# The root namespace for the entire #Journeta library.
+# See..
+#  * Journeta::JournetaEngine
+#  * http://journeta.rubyforge.org
 module Journeta
   
-  # The primary fascade of the entire +Journeta+ library, which composite a number of objects that may or may not have code running asynchronously to the primary application +Thread+.
+  # The primary fascade of the entire +Journeta+ library, which composite a number of
+  # objects running asynchronously to the primary application +Thread+. Use of this fascade
+  # requires a minimal amount of lifecycle management on your part to start and stop the
+  # engine at appropriate times. (Usually only at application startup and shutdown, respectively.)
   class JournetaEngine
     
     include Logger
@@ -66,9 +72,8 @@ module Journeta
     @@DEFAULT_PRESENCE_PERIOD = 4
     
     
-    def initialize(configuration ={})
-      putsd "CON: #{configuration}"
-      
+    # Nothing magical. Just creation of internal components and configuration setup.
+    def initialize(configuration ={})      
       # TODO make guaranteed to be unique.
       @uuid = configuration[:uuid] || rand(2 ** 31)
       @groups = configuration[:groups]
@@ -76,30 +81,36 @@ module Journeta
       
       @peer_port = configuration[:peer_port] || @@DEFAULT_PEER_PORT
       @peer_handler = configuration[:peer_handler] || @@DEFAULT_PEER_HANDLER
-      @peer_listener = Journeta::PeerListener.new self
       
       @presence_port = configuration[:presence_port] || @@DEFAULT_PRESENCE_PORT    
       @presence_address = configuration[:presence_address] || @@DEFAULT_PRESENCE_NETWORK      
       @presence_period = configuration[:presence_period] || @@DEFAULT_PRESENCE_PERIOD
+      
+      # Inversion of Control is used in the following components to allow for some semblance of testing.
+      @peer_listener = Journeta::PeerListener.new self
       @presence_listener = EventListener.new self
       @presence_broadcaster = EventBroadcaster.new self
-      
       @peer_registry = PeerRegistry.new self
     end
     
+    
+    # Starts sub-comonents which have their own life-cycle requirements.
+    # The registry itself does not have a dedication thread, and thus does not need to be started.
     def start
       # Start a peer listener first so we don't risk missing a connection attempt.
       putsd "Starting #{@peer_listener.class.to_s}"
       @peer_listener.start
       
-      # Start listening for presence events.
+      # Start listening for peer presence announcements next.
       putsd "Starting #{@presence_listener.class.to_s}"
       @presence_listener.start
       
-      # Start sending our own presence events!
+      # Now that we're all set up, start sending our own presence events
+      # so peer can start sending us data!
       putsd "Starting #{@presence_broadcaster.class.to_s}"
       @presence_broadcaster.start
     end
+    
     
     def stop
       # Stop broadcasting presence.
@@ -108,15 +119,23 @@ module Journeta
       @presence_listener.stop
       # Stop listening for incoming peer data.
       @peer_listener.stop
-      # Forcefull terminate all connections, which may be actively passing data.
+      
+      # While the registry does not have its own thread, it is in charge of managing
+      # +PeerConnection+s which DO have individual threads. This call
+      # forcefully terminates all connections, which may or may not be actively passing data.
       @peer_registry.unregister_all
     end
     
+    # Sends the given object to all peers in one of the #groups associated with this instance.
+    # The object will be marshalled via YAML, so anything the YAML serializer misses won't make it to the other side(s). 
+    # The return value is undefined.
     def send_to_known_peers(payload)
       # Delegate directly.
       peer_registry.send_to_known_peers(payload)
     end
     
+    # Send the given object to the peer of the given UUID, if available.
+    # The return value is undefined.
     def send_to_peer(peer_uuid, payload)
       # Delegate directly.
       peer_registry.send_to_peer(peer_uuid, payload)
@@ -128,11 +147,16 @@ module Journeta
       peer_registry.all(all_groups)
     end
     
-    # Adds (or updates) the given +PeerConnection+.
+    # Adds (or updates) the given +PeerConnection+. If a peer of the same UUID is found,
+    # the existing record will be updated and given instance #PeerConnection#stop'd.
+    # This prevents pending outbound data from being accidentally dropped.
     def register_peer(peer)
       peer_registry.register(peer)
     end
     
+    # Forcefully unregisters the given #PeerConnection, though this is of limited use
+    # since the #PresenceListener will eventually automatically re-register
+    # the peers UUID if it's still online.
     def unregister_peer(peer)
       peer_registry.unregister(peer)
     end

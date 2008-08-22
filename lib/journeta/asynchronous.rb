@@ -1,4 +1,6 @@
-# Copyright 2007, OpenRain, LLC. All rights reserved.
+# Copyright © 2007 OpenRain, LLC. All rights reserved.
+#
+# Preston Lee <preston.lee@openrain.com>
 
 
 require 'journeta/logger'
