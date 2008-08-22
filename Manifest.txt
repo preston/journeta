@@ -5,6 +5,7 @@ README.txt
 Rakefile
 lib/journeta.rb
 examples/instant_messenger.rb
+examples/instant_messenger_gui.rb
 examples/queue_client.rb
 examples/queue_server.rb
 lib/journeta/logger.rb
