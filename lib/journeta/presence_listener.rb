@@ -18,8 +18,13 @@ module Journeta
         socket = UDPSocket.new
         # Remember how i said this was fucked up? yeaahhhhhh. i hope you like C.
         # `man setsockopt` for details.
-        # SO_REUSEPORT is needed so multiple peers can be run on the same machine.
-        socket.setsockopt( Socket::SOL_SOCKET, Socket::SO_REUSEPORT, [1].pack("i_") )
+        if PLATFORM[/linux/i]
+          socket.setsockopt( Socket::SOL_SOCKET, Socket::SO_REUSEADDR, [1].pack("i_") )
+        else
+          # SO_REUSEPORT is needed so multiple peers can be run on the same machine.
+          # socket.setsockopt(Socket::IPPROTO_IP, Socket::IP_TTL, [1].pack('i')) # Preston's original config for OS X.
+          socket.setsockopt( Socket::SOL_SOCKET, Socket::SO_REUSEPORT, [1].pack("i_") ) # Remi's suggested default.
+        end        
         # socket.setsockopt( Socket::SOL_SOCKET, Socket::SO_REUSEADDR, [1].pack("i_") )
         socket.setsockopt(Socket::IPPROTO_IP, Socket::IP_ADD_MEMBERSHIP, addresses)
         socket.bind(Socket::INADDR_ANY, port)

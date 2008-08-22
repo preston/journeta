@@ -21,6 +21,7 @@ lib/journeta/journeta_engine.rb
 lib/journeta/common/dummy_peer_handler.rb
 lib/journeta/common/job.rb
 lib/journeta/common/shutdown.rb
+lib/journeta/common/basic_message.rb
 scripts/txt2html
 setup.rb
 test/test_journeta.rb

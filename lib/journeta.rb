@@ -16,6 +16,7 @@ require 'journeta/peer_registry'
 require 'journeta/peer_connection'
 require 'journeta/journeta_engine'
 
+require 'journeta/common/basic_message'
 require 'journeta/common/job'
 require 'journeta/common/shutdown'
 require 'journeta/common/dummy_peer_handler'

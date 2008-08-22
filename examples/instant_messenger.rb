@@ -6,20 +6,13 @@ $LOAD_PATH.unshift lib_path
 # Load up the library!
 require 'journeta'
 include Journeta
-
-
-# Any arbitrary object can be sent to peers as long as it's serializable to YAML.
-# We'll create an ordinary class with a couple typical-looking fields to send to our peers.
-class ExampleMessage
-  attr_accessor :name
-  attr_accessor :text
-end
+include Journeta::Common
 
 # A message handler will be called by the engine every time a message is received.
 # This code will be customized for your application-specific needs.
 class ExampleHandler < Journeta::DefaultPeerHandler
   def handle(message)
-    if message.class == ExampleMessage
+    if message.class == BasicMessage
       puts "#{message.name.chop}: #{message.text}"
     else
       putsd("Unsupported message type received from peer. (#{message})")
@@ -79,7 +72,7 @@ begin
   loop do
     begin
       input = gets
-      m = ExampleMessage.new
+      m = BasicMessage.new
       m.name = name
       m.text = input
       journeta.send_to_known_peers(m)

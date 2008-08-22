@@ -1,5 +1,14 @@
+== 0.0.4 2008-08-22
+
+* Graphical instant messenger example.
+  * examples/instant_messenger_gui.rb (requires the wxruby gem)
+  * Will talk to the command line example seemlessly.
+* Linux bug fixes.
+* Ruby 1.8.6 support
+
 == 0.0.3 2008-08-21
 
+* Linux support.
 * Added peer 'groups' support to avoid peer message spamming.
 * Major refactoring to make outbound messages sent asynchonously to the sending thread.
 * Example and documentation updates.

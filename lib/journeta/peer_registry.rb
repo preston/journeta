@@ -68,7 +68,7 @@ module Journeta
       @mutex.synchronize do
         # Grab all peers in relevant groups.
         group = all_do
-        n= group.count
+        n= group.length
         if n > 0
           putsd "Sending payload to #{n} peers."
           group.each do |uuid, conn|
