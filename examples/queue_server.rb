@@ -20,6 +20,8 @@ class JobQueuer
       puts "Enqueing job '##{msg.name}' from peer ##{msg.owner}."
       msg.submission = false
       @queue.push msg
+    else
+      puts "Unsupported junk received. Ignoring."
     end
   end
 end

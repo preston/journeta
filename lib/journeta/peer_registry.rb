@@ -107,11 +107,16 @@ module Journeta
         res = Hash.new.update @peers
       else
         res = Hash.new
-        @peers.each do |uuid, n|
-          n.groups.each do |g|
-            if @engine.groups.include?(g)
-              res[uuid] = n
-            end  
+        @peers.each do |uuid, peer|
+          if peer.groups
+            peer.groups.each do |g|
+              if @engine.groups.nil? || @engine.groups.include?(g)
+                res[uuid] = peer
+              end  
+            end
+          else
+            # Peer is a member of all groups.
+            res[uuid] = peer
           end
         end
       end     

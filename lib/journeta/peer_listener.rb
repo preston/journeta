@@ -38,7 +38,7 @@ module Journeta
           putsd "Session closed."
         end 
       ensure 
-        putsd "Closing event listener socket."
+        putsd "Closing peer listener socket."
         # session.close
         # socket.close
       end

@@ -58,18 +58,16 @@ module Journeta
     
     
     # Incoming direct peer TCP connections will use this port.
-    @@DEFAULT_PEER_PORT = 31338
+    DEFAULT_PEER_PORT = 31338
     
-    # The application message callback handler.
-    @@DEFAULT_PEER_HANDLER = DefaultPeerHandler.new
-    
-    @@DEFAULT_PRESENCE_PORT = 31337
+    # On UDP port on which we send/receive peer presence messages.
+    DEFAULT_PRESENCE_PORT = 31337
     
     # Addresses 224.0.0.0 through 239.255.255.255 are reserved for multicast messages.
-    @@DEFAULT_PRESENCE_NETWORK = '224.220.221.222'
+    DEFAULT_PRESENCE_NETWORK = '224.220.221.222'
     
     # The wait time, in seconds, between rebroadcasts of peer presence.
-    @@DEFAULT_PRESENCE_PERIOD = 4
+    DEFAULT_PRESENCE_PERIOD = 4
     
     
     # Nothing magical. Just creation of internal components and configuration setup.
@@ -77,20 +75,20 @@ module Journeta
       # TODO make guaranteed to be unique.
       @uuid = configuration[:uuid] || rand(2 ** 31)
       @groups = configuration[:groups]
+
       
-      
-      @peer_port = configuration[:peer_port] || @@DEFAULT_PEER_PORT
-      @peer_handler = configuration[:peer_handler] || @@DEFAULT_PEER_HANDLER
-      
-      @presence_port = configuration[:presence_port] || @@DEFAULT_PRESENCE_PORT    
-      @presence_address = configuration[:presence_address] || @@DEFAULT_PRESENCE_NETWORK      
-      @presence_period = configuration[:presence_period] || @@DEFAULT_PRESENCE_PERIOD
+      @peer_port = configuration[:peer_port] || DEFAULT_PEER_PORT
+      @peer_handler = configuration[:peer_handler] || DefaultPeerHandler.new
+
+      @presence_port = configuration[:presence_port] || DEFAULT_PRESENCE_PORT    
+      @presence_address = configuration[:presence_address] || DEFAULT_PRESENCE_NETWORK      
+      @presence_period = configuration[:presence_period] || DEFAULT_PRESENCE_PERIOD
       
       # Inversion of Control is used in the following components to allow for some semblance of testing.
-      @peer_listener = Journeta::PeerListener.new self
-      @presence_listener = EventListener.new self
-      @presence_broadcaster = EventBroadcaster.new self
-      @peer_registry = PeerRegistry.new self
+      @peer_listener = configuration[:peer_listener] || Journeta::PeerListener.new(self)
+      @peer_registry = configuration[:peer_registry] || PeerRegistry.new(self)
+      @presence_listener = configuration[:presence_listener] || PresenceListener.new(self)
+      @presence_broadcaster = configuration[:presence_broadcaster] || PresenceBroadcaster.new(self)
     end
     
     

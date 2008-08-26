@@ -10,7 +10,7 @@ module Journeta
   # to listen for presence broadcast from peers. Processing of the
   # inbound data is quickly delegated to a background thread to allow the listener
   # to continue responding to inbound traffic as fast as possible.
-  class EventListener < Journeta::Asynchronous    
+  class PresenceListener < Journeta::Asynchronous    
     
     def go
       presence_address = @engine.presence_address
@@ -59,7 +59,7 @@ module Journeta
           # putsd "Event received!"
         end
       ensure
-        putsd "Closing event listener socket."
+        putsd "Closing presence listener socket."
         socket.close
       end
     end
