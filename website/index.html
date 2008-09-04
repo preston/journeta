@@ -74,24 +74,33 @@
 					</div>
 					<div>
 						<h2>
-							Journeta Is Simple Because It Doesn’t..
+							Journeta is simple because it doesn’t..
 						</h2>
 						<ol>
 							<li>
-								<h3>Work outside the LAN</h3>Presence broadcasts don’t propagate to the internet, and there is no such thing as a “server” in Journeta.
+								<h3>
+									Work outside the LAN
+								</h3>Presence broadcasts don’t propagate to the internet, and there is no such thing as a “server” in Journeta.
 							</li>
 							<li>
-								<h3>Currently use secure channels</h3>All network messages are currently sent in RAW form across the network, and messages from peers are implicitly authorized. Engine-level support for encryption and authentication will be coming in the future.
+								<h3>
+									Currently use secure channels
+								</h3>All network messages are currently sent in RAW form across the network, and messages from peers are implicitly authorized. Engine-level support for encryption and authentication will be coming in the future.
 							</li>
 							<li>
-								<h3>Dictate your message handling model</h3>
-								Remember that stuff sent to your message handler is not coming from your applications main thread!
+								<h3>
+									Dictate your message handling model
+								</h3>Remember that stuff sent to your message handler is not coming from your applications main thread!
 							</li>
 							<li>
-								<h3>Provide backwards compatibility</h3>, or for the matter, compatibility with anything other than peers of the same Journeta version. No formal messaging specifications here. Different versions of Journeta may or may not be protocol compatible; we don’t know and we don’t keep track. We will try to maintain interface compatibilty between point releases (for example between 0.1.0 and 0.1.1).
+								<h3>
+									Guarantee backwards compatibility
+								</h3>No formal messaging specifications here. We will try to maintain interface compatibility between point releases (for example between 0.1.0 and 0.1.1), but we don't compatibility test interaction between point releases so your milage may vary.
 							</li>
 							<li>
-								<h3>Guarantee message delivery</h3>UDP</span> is used for some types of communications, and peers are free to go down at any time.
+								<h3>
+									Guarantee message delivery
+								</h3>UDP is used for some types of communications, and peers are free to go down at any time.
 							</li>
 						</ol>
 					</div>
@@ -101,16 +110,24 @@
 						</h2>
 						<ol>
 							<li>
-								<h3>P2P encryption and handshaking</h3>. Communication currently are not secure and should only be used in a trusted environment
+								<h3>
+									P2P encryption and handshaking
+								</h3>Communication currently are not secure and should only be used in a trusted environment.
 							</li>
 							<li>
-								<h3>Additional engine hooks</h3>. This will allow you to tap into internal workings of Journeta to override internal event handling mechanisms.
+								<h3>
+									Additional engine hooks
+								</h3>This will allow you to tap into internal workings of Journeta to override default event handling mechanisms. For example, you'll be able to override the default (YAML) serializer.
 							</li>
 							<li>
-								<h3>Preemptive peer reaping</h3> to remove peers for the engine if they have not been heard from in a while.
+								<h3>
+									Preemptive peer reaping
+								</h3>To remove peers from the engine if they have not been heard from in a while.
 							</li>
 							<li>
-								<h3>Failure callbacks</h3> so your application may respond to peers going down before all outgoing information has been sent.
+								<h3>
+									Failure callbacks
+								</h3>To allow your application to respond to peers going down before all outgoing information has been sent.
 							</li>
 						</ol>
 					</div>
