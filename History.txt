@@ -1,3 +1,11 @@
+== 0.1.2 2008-09-??
+
+
+
+== 0.1.1 2008-09-05
+
+* Figuring out how to deploy properly with hoe :)
+
 == 0.1.0 2008-09-05
 
 * Renamed Journeta::JournetaEngine to Journeta::Engine
