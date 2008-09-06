@@ -11,7 +11,7 @@ include Journeta::Common
 # A message handler will be called by the engine every time a message is received.
 # This code will be customized for your application-specific needs.
 class ExampleHandler < Journeta::DefaultPeerHandler
-  def handle(message)
+  def call(message)
     if message.class == BasicMessage
       puts "#{message.name.chop}: #{message.text}"
     else

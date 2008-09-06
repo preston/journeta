@@ -15,7 +15,7 @@ class JobQueuer
   def initialize(queue)
     @queue = queue
   end
-  def handle(msg)
+  def call(msg)
     if msg.class == Job && msg.submission
       puts "Enqueing job '##{msg.name}' from peer ##{msg.owner}."
       msg.submission = false

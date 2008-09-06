@@ -39,7 +39,12 @@ For insight into events internal to the library, start ruby with the `--debug` o
 	sent from the server(s). All nodes automatically find eachother. Try running multiples clients,
 	and then multiple servers. Notice that when you have N servers, each job gets run N times,
 	and not necessarilly by the same client!
-	
+
+ examples/network_status.rb
+
+	Monitors the presence of all peers on the network.
+
+		
 == Author
 
 Preston Lee <preston.lee at openrain d0t com>

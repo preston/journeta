@@ -2,8 +2,8 @@ require 'thread'
 
 module Journeta
   
-  # responsible for keeping in-memory metadata on known peers,
-  # as well as peer tcp connections
+  # Responsible for keeping in-memory metadata on known peers in the form of PeerConnections.
+  # TODO Add dead peer reaper functionality.
   class PeerRegistry #<< Journeta::Asynchronous
     
     include Logger

@@ -31,7 +31,7 @@ module Journeta
               end
               msg     = YAML::load(data)
               h = @engine.peer_handler
-              h.handle msg              
+              h.call msg              
             end
           end
         rescue

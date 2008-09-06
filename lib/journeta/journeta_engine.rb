@@ -145,6 +145,14 @@ module Journeta
       peer_registry.all(all_groups)
     end
     
+    def known_groups()
+      s = Set.new
+      self.known_peers(true).each do |uuid, peer|
+        s.merge peer.groups
+      end
+      s.to_a
+    end
+    
     # Adds (or updates) the given +PeerConnection+. If a peer of the same UUID is found,
     # the existing record will be updated and given instance #PeerConnection#stop'd.
     # This prevents pending outbound data from being accidentally dropped.

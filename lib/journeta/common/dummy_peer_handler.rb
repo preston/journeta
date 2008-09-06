@@ -3,7 +3,7 @@ module Journeta
   module Common
     
     class DummyPeerHandler
-      def handle(message)
+      def call(message)
         # Intentionally ingore all messages.
       end
     end

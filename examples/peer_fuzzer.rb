@@ -10,6 +10,8 @@ require 'journeta'
 include Journeta
 include Journeta::Common
 
+require 'pp'
+
 # We'll join all group to invoke the maximum amount of nastiness.
 # :groups => nil
 @journeta = JournetaEngine.new
@@ -19,6 +21,9 @@ puts "Starting malicious peer..."
 
 puts "Finding peers..."
 sleep JournetaEngine::DEFAULT_PRESENCE_PERIOD + 2
+
+puts "Known groups.."
+pp @journeta.known_groups
 
 def fuzz(data)
   @journeta.send_to_known_peers(data)

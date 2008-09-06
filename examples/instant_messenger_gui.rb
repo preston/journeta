@@ -27,7 +27,7 @@ class JournetaGUIHandler
     @control = control
   end
   
-  def handle(message)
+  def call(message)
     if message.class == BasicMessage
       text = @control.get_value
       text.chop!

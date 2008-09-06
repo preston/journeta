@@ -5,16 +5,25 @@ module Journeta
   
   # An outgoing message tube. Messages may or may not arrive at the destination, but if they do they'll be in order.
   class PeerConnection < Journeta::Asynchronous
-    
+
     include Logger
     
+    # String
     attr_accessor :uuid
     attr_accessor :ip_address
-    attr_accessor :peer_port
     attr_accessor :version
+    
+    # An Array of Strings.
+    attr_accessor :groups
+    
+    # Time.
     attr_accessor :created_at
     attr_accessor :updated_at
-    attr_accessor :groups
+    
+    # integer.
+    attr_accessor :peer_port
+    
+    
     
     def initialize(engine)
       super(engine)
@@ -69,6 +78,8 @@ module Journeta
         # If somehow we end up in this block again before our child thread kills us, we're ok to create another one
         # because the registry will just ignore a request to unregister an unknown connection, and it's internally
         # protected against registry corruption with an exclusive lock.
+        #
+        # Sorry that this is deceptively complicated. It's a design gotcha! :)
         putsd "Peer #{uuid} has gone away. Deregistering in the background."
         Thread.new {
           @engine.unregister_peer(self)

@@ -4,7 +4,7 @@ module Journeta
     
     include Logger
     
-    def handle(message)
+    def call(message)
       putsd("New message received! #{message}")
     end
     

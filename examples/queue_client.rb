@@ -9,7 +9,7 @@ include Journeta::Common
 include Journeta::Common::Shutdown
 
 class JobProcessor
-  def handle(msg)
+  def call(msg)
     if msg.class == Job && !msg.submission
       puts "Processing job ##{msg.name} from peer ##{msg.owner}."
     end
