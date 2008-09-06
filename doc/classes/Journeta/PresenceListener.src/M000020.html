@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>go (Journeta::PresenceListener)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/journeta/presence_listener.rb, line 15</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">go</span>
+      <span class="ruby-identifier">presence_address</span> = <span class="ruby-ivar">@engine</span>.<span class="ruby-identifier">presence_address</span>
+      <span class="ruby-identifier">port</span> = <span class="ruby-ivar">@engine</span>.<span class="ruby-identifier">presence_port</span>
+      <span class="ruby-identifier">addresses</span> =  <span class="ruby-constant">IPAddr</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">presence_address</span>).<span class="ruby-identifier">hton</span> <span class="ruby-operator">+</span> <span class="ruby-constant">IPAddr</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;0.0.0.0&quot;</span>).<span class="ruby-identifier">hton</span>
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-identifier">socket</span> = <span class="ruby-constant">UDPSocket</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-comment cmt"># Remember how i said this was fucked up? yeaahhhhhh. i hope you like C.</span>
+        <span class="ruby-comment cmt"># `man setsockopt` for details.</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-constant">PLATFORM</span>[<span class="ruby-regexp re">/linux/i</span>]
+          <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">setsockopt</span>( <span class="ruby-constant">Socket</span><span class="ruby-operator">::</span><span class="ruby-constant">SOL_SOCKET</span>, <span class="ruby-constant">Socket</span><span class="ruby-operator">::</span><span class="ruby-constant">SO_REUSEADDR</span>, [<span class="ruby-value">1</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">&quot;i_&quot;</span>) )
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-comment cmt"># SO_REUSEPORT is needed so multiple peers can be run on the same machine.</span>
+          <span class="ruby-comment cmt"># socket.setsockopt(Socket::IPPROTO_IP, Socket::IP_TTL, [1].pack('i')) # Preston's original config for OS X.</span>
+          <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">setsockopt</span>( <span class="ruby-constant">Socket</span><span class="ruby-operator">::</span><span class="ruby-constant">SOL_SOCKET</span>, <span class="ruby-constant">Socket</span><span class="ruby-operator">::</span><span class="ruby-constant">SO_REUSEPORT</span>, [<span class="ruby-value">1</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">&quot;i_&quot;</span>) ) <span class="ruby-comment cmt"># Remi's suggested default.</span>
+        <span class="ruby-keyword kw">end</span>        
+        <span class="ruby-comment cmt"># socket.setsockopt( Socket::SOL_SOCKET, Socket::SO_REUSEADDR, [1].pack(&quot;i_&quot;) )</span>
+        <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">setsockopt</span>(<span class="ruby-constant">Socket</span><span class="ruby-operator">::</span><span class="ruby-constant">IPPROTO_IP</span>, <span class="ruby-constant">Socket</span><span class="ruby-operator">::</span><span class="ruby-constant">IP_ADD_MEMBERSHIP</span>, <span class="ruby-identifier">addresses</span>)
+        <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">bind</span>(<span class="ruby-constant">Socket</span><span class="ruby-operator">::</span><span class="ruby-constant">INADDR_ANY</span>, <span class="ruby-identifier">port</span>)
+        <span class="ruby-identifier">putsd</span> <span class="ruby-value str">&quot;Waiting for presence events.&quot;</span>
+        <span class="ruby-identifier">loop</span> <span class="ruby-keyword kw">do</span>
+          <span class="ruby-comment cmt"># Why 1024? umm.. because it's Thursday!</span>
+          <span class="ruby-identifier">data</span>, <span class="ruby-identifier">meta</span> = <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">recvfrom</span> <span class="ruby-value">1024</span>
+          <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">data</span>) {
+            <span class="ruby-identifier">event</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">data</span>)
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">uuid</span> <span class="ruby-operator">!=</span> <span class="ruby-ivar">@engine</span>.<span class="ruby-identifier">uuid</span>
+              <span class="ruby-identifier">m</span> = <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">load</span>(<span class="ruby-identifier">data</span>)
+              <span class="ruby-identifier">peer</span> = <span class="ruby-constant">PeerConnection</span>.<span class="ruby-identifier">new</span> <span class="ruby-ivar">@engine</span>
+              <span class="ruby-comment cmt"># Why is this always [2]? Not sure.. they should have returned a hash instead.</span>
+              <span class="ruby-identifier">peer</span>.<span class="ruby-identifier">ip_address</span> = <span class="ruby-identifier">meta</span>[<span class="ruby-value">2</span>]
+              <span class="ruby-identifier">peer</span>.<span class="ruby-identifier">peer_port</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">peer_port</span>
+              <span class="ruby-identifier">peer</span>.<span class="ruby-identifier">uuid</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">uuid</span>
+              <span class="ruby-identifier">peer</span>.<span class="ruby-identifier">version</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">version</span>
+              <span class="ruby-identifier">peer</span>.<span class="ruby-identifier">groups</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">groups</span>
+              
+              <span class="ruby-comment cmt"># We should not start the #PeerConnection before registering because</span>
+              <span class="ruby-comment cmt"># the peer might already be registered. In this case, we'd have wasted a thread,</span>
+              <span class="ruby-comment cmt"># so we'll let the registry handle startup (if it happens at all.)</span>
+              <span class="ruby-comment cmt">#</span>
+              <span class="ruby-comment cmt"># peer.start</span>
+              
+              <span class="ruby-comment cmt"># TODO validate peer entry is sane before registering it</span>
+              <span class="ruby-ivar">@engine</span>.<span class="ruby-identifier">register_peer</span> <span class="ruby-identifier">peer</span>
+            <span class="ruby-keyword kw">end</span>
+          }
+          <span class="ruby-comment cmt"># putsd &quot;Event received!&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">ensure</span>
+        <span class="ruby-identifier">putsd</span> <span class="ruby-value str">&quot;Closing presence listener socket.&quot;</span>
+        <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">close</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

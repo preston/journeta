@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Journeta::Engine</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Journeta::Engine</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/journeta/journeta_engine_rb.html">
+                lib/journeta/journeta_engine.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+    <div id="diagram">
+      <map id="map" name="map">
+  <area shape="rect" coords="113,181,191,229"      href="Asynchronous.html" alt="Asynchronous" />
+  <area shape="rect" coords="157,277,229,325"      href="PeerListener.html" alt="PeerListener" />
+  <area shape="rect" coords="27,277,133,325"      href="PresenceBroadcaster.html" alt="PresenceBroadcaster" />
+  <area shape="rect" coords="368,277,453,325"      href="PeerConnection.html" alt="PeerConnection" />
+  <area shape="rect" coords="253,277,344,325"      href="PresenceListener.html" alt="PresenceListener" />
+  <area shape="rect" coords="215,181,287,229"      href="Engine.html" alt="Engine" />
+  <area shape="rect" coords="337,181,412,229"      href="PeerRegistry.html" alt="PeerRegistry" />
+  <area shape="rect" coords="436,181,537,229"      href="DefaultPeerHandler.html" alt="DefaultPeerHandler" />
+  <area shape="rect" coords="27,85,123,133"      href="PresenceMessage.html" alt="PresenceMessage" />
+  <area shape="rect" coords="581,85,683,133"      href="Common/DummyPeerHandler.html" alt="DummyPeerHandler" />
+  <area shape="rect" coords="477,85,557,133"      href="Common/BasicMessage.html" alt="BasicMessage" />
+  <area shape="rect" coords="381,85,453,133"      href="Common/Job.html" alt="Job" />
+  <area shape="rect" coords="723,77,816,121"      href="Common/Shutdown.html" alt="Shutdown" />
+  <area shape="rect" coords="371,47,827,144"      href="Common.html" alt="Common" />
+  <area shape="rect" coords="267,77,360,121"      href="VERSION.html" alt="VERSION" />
+  <area shape="rect" coords="163,77,256,121"      href="Logger.html" alt="Logger" />
+  <area shape="rect" coords="16,16,837,336"      href="../Journeta.html" alt="Journeta" />
+</map>
+<img src="../../dot/f_4.png" usemap="#map" border="0" alt="dot/f_4.png">
+    </div>
+
+    <div id="description">
+      <p>
+The primary fascade of the entire <tt>Journeta</tt> library, which
+composite a number of objects running asynchronously to the primary
+application <tt>Thread</tt>. Use of this fascade requires a minimal amount
+of lifecycle management on your part to <a
+href="Engine.html#M000008">start</a> and <a
+href="Engine.html#M000009">stop</a> the engine at appropriate times.
+(Usually only at application startup and shutdown, respectively.)
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000013">known_groups</a>&nbsp;&nbsp;
+      <a href="#M000012">known_peers</a>&nbsp;&nbsp;
+      <a href="#M000007">new</a>&nbsp;&nbsp;
+      <a href="#M000014">register_peer</a>&nbsp;&nbsp;
+      <a href="#M000010">send_to_known_peers</a>&nbsp;&nbsp;
+      <a href="#M000011">send_to_peer</a>&nbsp;&nbsp;
+      <a href="#M000008">start</a>&nbsp;&nbsp;
+      <a href="#M000009">stop</a>&nbsp;&nbsp;
+      <a href="#M000015">unregister_peer</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="Logger.html">Logger</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DEFAULT_PEER_PORT</td>
+          <td>=</td>
+          <td class="context-item-value">31338</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+Incoming direct peer TCP connections will use this port.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DEFAULT_PRESENCE_PORT</td>
+          <td>=</td>
+          <td class="context-item-value">31337</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+On UDP port on which we send/receive peer presence messages.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DEFAULT_PRESENCE_NETWORK</td>
+          <td>=</td>
+          <td class="context-item-value">'224.220.221.222'</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+Addresses 224.0.0.0 through 239.255.255.255 are reserved for multicast
+messages.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DEFAULT_PRESENCE_PERIOD</td>
+          <td>=</td>
+          <td class="context-item-value">4</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+The wait time, in seconds, between rebroadcasts of peer presence.
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">groups</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+An array of peer network names. Ex: [&#8216;OpenRain Test&#8217;,
+&#8216;quick_chat_app&#8217;] An empty array indicates implicit membership
+in all discovered groups.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">peer_handler</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+Application logic which processes session data.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">peer_listener</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+Constantly listens for incoming peer sessions
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">peer_port</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+The TCP port used to receive direct peer messages.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">peer_registry</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+Authoritative peer availability database.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">presence_address</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+The UDP network address used for broadcast messages.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">presence_broadcaster</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+Continuously sends out &quot;i&#8216;m here&quot; presence messages to the
+local network
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">presence_listener</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+continuously listens for &quot;i&#8216;m here&quot; presence messages from
+other peers
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">presence_period</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+The amount of time between presence broadcasts.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">presence_port</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+The UDP port for event broadcast messages.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">uuid</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+A supposedly universally unique id for this instance.
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="Engine.src/M000007.html" target="Code" class="method-signature"
+            onclick="popupCode('Engine.src/M000007.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(configuration ={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Nothing magical. Just creation of internal components and configuration
+setup.
+</p>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+          <a href="Engine.src/M000013.html" target="Code" class="method-signature"
+            onclick="popupCode('Engine.src/M000013.html');return false;">
+          <span class="method-name">known_groups</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+          <a href="Engine.src/M000012.html" target="Code" class="method-signature"
+            onclick="popupCode('Engine.src/M000012.html');return false;">
+          <span class="method-name">known_peers</span><span class="method-args">(all_groups = false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns metadata on all known peers in a hash, keyed by the uuid of each. A
+record corresponding to this peer is not included.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+          <a href="Engine.src/M000014.html" target="Code" class="method-signature"
+            onclick="popupCode('Engine.src/M000014.html');return false;">
+          <span class="method-name">register_peer</span><span class="method-args">(peer)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Adds (or updates) the given <tt><a
+href="PeerConnection.html">PeerConnection</a></tt>. If a peer of the same
+UUID is found, the existing record will be updated and given instance
+PeerConnection#stop&#8216;d. This prevents pending outbound data from being
+accidentally dropped.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="Engine.src/M000010.html" target="Code" class="method-signature"
+            onclick="popupCode('Engine.src/M000010.html');return false;">
+          <span class="method-name">send_to_known_peers</span><span class="method-args">(payload)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sends the given object to all peers in one of the groups associated with
+this instance. The object will be marshalled via YAML, so anything the YAML
+serializer misses won&#8216;t make it to the other side(s). The return
+value is undefined.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <a href="Engine.src/M000011.html" target="Code" class="method-signature"
+            onclick="popupCode('Engine.src/M000011.html');return false;">
+          <span class="method-name">send_to_peer</span><span class="method-args">(peer_uuid, payload)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Send the given object to the peer of the given UUID, if available. The
+return value is undefined.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="Engine.src/M000008.html" target="Code" class="method-signature"
+            onclick="popupCode('Engine.src/M000008.html');return false;">
+          <span class="method-name">start</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Starts sub-comonents which have their own life-cycle requirements. The
+registry itself does not have a dedication thread, and thus does not need
+to be started.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="Engine.src/M000009.html" target="Code" class="method-signature"
+            onclick="popupCode('Engine.src/M000009.html');return false;">
+          <span class="method-name">stop</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <a href="Engine.src/M000015.html" target="Code" class="method-signature"
+            onclick="popupCode('Engine.src/M000015.html');return false;">
+          <span class="method-name">unregister_peer</span><span class="method-args">(peer)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Forcefully unregisters the given <a
+href="PeerConnection.html">PeerConnection</a>, though this is of limited
+use since the <a href="PresenceListener.html">PresenceListener</a> will
+eventually automatically re-register the peers UUID if it&#8216;s still
+online.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

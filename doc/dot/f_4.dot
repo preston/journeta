@@ -1,0 +1,238 @@
+digraph TopLevel {
+    label = "TopLevel"
+    compound = true
+    fontname = Arial
+    fontsize = 8
+    bgcolor = lightcyan1
+    node [
+        color = black,
+        fontname = Arial,
+        fontsize = 8
+    ]
+
+    Journeta__Asynchronous -> Journeta__PeerListener [
+
+    ]
+
+    Journeta__Asynchronous -> Journeta__PresenceBroadcaster [
+
+    ]
+
+    Journeta__Logger -> Journeta__Engine [
+        ltail = cluster_Journeta__Logger
+    ]
+
+    Journeta__Logger -> Journeta__PeerConnection [
+        ltail = cluster_Journeta__Logger
+    ]
+
+    Journeta__Asynchronous -> Journeta__PeerConnection [
+
+    ]
+
+    Journeta__Asynchronous -> Journeta__PresenceListener [
+
+    ]
+
+    Journeta__Logger -> Journeta__PeerRegistry [
+        ltail = cluster_Journeta__Logger
+    ]
+
+    Journeta__Logger -> Journeta__DefaultPeerHandler [
+        ltail = cluster_Journeta__Logger
+    ]
+
+    Journeta__Logger -> Journeta__Asynchronous [
+        ltail = cluster_Journeta__Logger
+    ]
+
+    subgraph cluster_Journeta {
+        label = "Journeta"
+        fillcolor = palegreen1
+        URL = "classes/Journeta.html"
+        color = blue
+        fontname = Arial
+        style = filled
+        Journeta [
+            shape = plaintext,
+            height = 0.01,
+            width = 0.01,
+            label = ""
+        ]
+
+        Journeta__PeerListener [
+            fontcolor = black,
+            shape = ellipse,
+            URL = "classes/Journeta/PeerListener.html",
+            color = palegoldenrod,
+            style = filled,
+            label = "PeerListener"
+        ]
+
+        Journeta__PresenceMessage [
+            fontcolor = black,
+            shape = ellipse,
+            URL = "classes/Journeta/PresenceMessage.html",
+            color = palegoldenrod,
+            style = filled,
+            label = "PresenceMessage"
+        ]
+
+        Journeta__PresenceBroadcaster [
+            fontcolor = black,
+            shape = ellipse,
+            URL = "classes/Journeta/PresenceBroadcaster.html",
+            color = palegoldenrod,
+            style = filled,
+            label = "PresenceBroadcaster"
+        ]
+
+        Journeta__Engine [
+            fontcolor = black,
+            shape = ellipse,
+            URL = "classes/Journeta/Engine.html",
+            color = palegoldenrod,
+            style = filled,
+            label = "Engine"
+        ]
+
+        Journeta__PeerConnection [
+            fontcolor = black,
+            shape = ellipse,
+            URL = "classes/Journeta/PeerConnection.html",
+            color = palegoldenrod,
+            style = filled,
+            label = "PeerConnection"
+        ]
+
+        Journeta__PresenceListener [
+            fontcolor = black,
+            shape = ellipse,
+            URL = "classes/Journeta/PresenceListener.html",
+            color = palegoldenrod,
+            style = filled,
+            label = "PresenceListener"
+        ]
+
+        Journeta__PeerRegistry [
+            fontcolor = black,
+            shape = ellipse,
+            URL = "classes/Journeta/PeerRegistry.html",
+            color = palegoldenrod,
+            style = filled,
+            label = "PeerRegistry"
+        ]
+
+        Journeta__DefaultPeerHandler [
+            fontcolor = black,
+            shape = ellipse,
+            URL = "classes/Journeta/DefaultPeerHandler.html",
+            color = palegoldenrod,
+            style = filled,
+            label = "DefaultPeerHandler"
+        ]
+
+        Journeta__Asynchronous [
+            fontcolor = black,
+            shape = ellipse,
+            URL = "classes/Journeta/Asynchronous.html",
+            color = palegoldenrod,
+            style = filled,
+            label = "Asynchronous"
+        ]
+
+        subgraph cluster_Journeta__Common {
+            label = "Common"
+            fillcolor = palegreen3
+            URL = "classes/Journeta/Common.html"
+            color = blue
+            fontname = Arial
+            style = filled
+            Journeta__Common [
+                shape = plaintext,
+                height = 0.01,
+                width = 0.01,
+                label = ""
+            ]
+
+            Journeta__Common__DummyPeerHandler [
+                fontcolor = black,
+                shape = ellipse,
+                URL = "classes/Journeta/Common/DummyPeerHandler.html",
+                color = palegoldenrod,
+                style = filled,
+                label = "DummyPeerHandler"
+            ]
+
+            Journeta__Common__BasicMessage [
+                fontcolor = black,
+                shape = ellipse,
+                URL = "classes/Journeta/Common/BasicMessage.html",
+                color = palegoldenrod,
+                style = filled,
+                label = "BasicMessage"
+            ]
+
+            Journeta__Common__Job [
+                fontcolor = black,
+                shape = ellipse,
+                URL = "classes/Journeta/Common/Job.html",
+                color = palegoldenrod,
+                style = filled,
+                label = "Job"
+            ]
+
+            subgraph cluster_Journeta__Common__Shutdown {
+                label = "Shutdown"
+                fillcolor = palegreen3
+                URL = "classes/Journeta/Common/Shutdown.html"
+                color = blue
+                fontname = Arial
+                style = filled
+                Journeta__Common__Shutdown [
+                    shape = plaintext,
+                    height = 0.01,
+                    width = 0.75,
+                    label = ""
+                ]
+
+            }
+
+        }
+
+        subgraph cluster_Journeta__VERSION {
+            label = "VERSION"
+            fillcolor = palegreen3
+            URL = "classes/Journeta/VERSION.html"
+            color = blue
+            fontname = Arial
+            style = filled
+            Journeta__VERSION [
+                shape = plaintext,
+                height = 0.01,
+                width = 0.75,
+                label = ""
+            ]
+
+        }
+
+        subgraph cluster_Journeta__Logger {
+            label = "Logger"
+            fillcolor = palegreen3
+            URL = "classes/Journeta/Logger.html"
+            color = blue
+            fontname = Arial
+            style = filled
+            Journeta__Logger [
+                shape = plaintext,
+                height = 0.01,
+                width = 0.75,
+                label = ""
+            ]
+
+        }
+
+    }
+
+}
+

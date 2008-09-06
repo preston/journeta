@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Journeta::Engine)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 74</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">configuration</span> ={})      
+      <span class="ruby-comment cmt"># TODO make guaranteed to be unique.</span>
+      <span class="ruby-ivar">@uuid</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:uuid</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">rand</span>(<span class="ruby-value">2</span> <span class="ruby-operator">**</span> <span class="ruby-value">31</span>)
+      <span class="ruby-ivar">@groups</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:groups</span>]
+
+      
+      <span class="ruby-ivar">@peer_port</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:peer_port</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PEER_PORT</span>
+      <span class="ruby-ivar">@peer_handler</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:peer_handler</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DefaultPeerHandler</span>.<span class="ruby-identifier">new</span>
+
+      <span class="ruby-ivar">@presence_port</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:presence_port</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PRESENCE_PORT</span>    
+      <span class="ruby-ivar">@presence_address</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:presence_address</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PRESENCE_NETWORK</span>      
+      <span class="ruby-ivar">@presence_period</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:presence_period</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PRESENCE_PERIOD</span>
+      
+      <span class="ruby-comment cmt"># Inversion of Control is used in the following components to allow for some semblance of testing.</span>
+      <span class="ruby-ivar">@peer_listener</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:peer_listener</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Journeta</span><span class="ruby-operator">::</span><span class="ruby-constant">PeerListener</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+      <span class="ruby-ivar">@peer_registry</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:peer_registry</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">PeerRegistry</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+      <span class="ruby-ivar">@presence_listener</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:presence_listener</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">PresenceListener</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+      <span class="ruby-ivar">@presence_broadcaster</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:presence_broadcaster</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">PresenceBroadcaster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
