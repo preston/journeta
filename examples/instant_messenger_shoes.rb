@@ -30,7 +30,7 @@ require 'journeta'
     end
 
 peer_port = (2048 + rand( 2 ** 8))
-@journeta = ::Journeta::JournetaEngine.new(:peer_port => peer_port, :peer_handler => EditorEventHandler.new, :groups => ['shoes_editor'])
+@journeta = ::Journeta::Engine.new(:peer_port => peer_port, :peer_handler => EditorEventHandler.new, :groups => ['shoes_editor'])
 @journeta.start
 
 #Shoes.app :title => 'Shoes Instant Messenger' do

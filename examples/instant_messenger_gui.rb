@@ -106,7 +106,7 @@ class IConvFrame < Wx::Frame
     panel.set_sizer_and_fit( sizer )
     
     peer_port = (2048 + rand( 2 ** 8))
-    @journeta = Journeta::JournetaEngine.new(:peer_port => peer_port, :peer_handler => JournetaGUIHandler.new(@peer_control), :groups => ['im_example'])    
+    @journeta = Journeta::Engine.new(:peer_port => peer_port, :peer_handler => JournetaGUIHandler.new(@peer_control), :groups => ['im_example'])    
     @journeta.start
   end
   

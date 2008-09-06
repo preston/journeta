@@ -6,7 +6,7 @@ Journeta is a library for passing objects between automatically discovered and c
 
 h2. Peers
 
-A "peer" is represented by a "start"ed instance of JournetaEngine in your Ruby application. You'll probably want just one, but may run more if it makes sense for your application to logically represent two (or more) peers simultaneously.
+A "peer" is represented by a "start"ed instance of Engine in your Ruby application. You'll probably want just one, but may run more if it makes sense for your application to logically represent two (or more) peers simultaneously.
 
 Any object that can be serialized via YAML can be sent and received by Journeta. Received messages (a.k.a. objects defined by your application sent from a peer) are passed into a message handler you define, in an event-based manner. Message do not come from your applications main thread.
 

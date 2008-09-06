@@ -4,7 +4,7 @@ class TestEventBroadcaster < Test::Unit::TestCase
 
    
    def setup
-      # @journeta = JournetaEngine.new
+      # @journeta = Engine.new
       # @journeta.start
    end
 

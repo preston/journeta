@@ -17,7 +17,7 @@ class JobProcessor
 end
 
 peer_port = (2048 + rand( 2 ** 8))
-journeta = Journeta::JournetaEngine.new(:peer_port => peer_port, :peer_handler => JobProcessor.new, :groups => ['queue_example'])
+journeta = Journeta::Engine.new(:peer_port => peer_port, :peer_handler => JobProcessor.new, :groups => ['queue_example'])
 stop_on_shutdown(journeta)
 journeta.start
 

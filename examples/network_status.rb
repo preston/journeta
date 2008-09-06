@@ -11,7 +11,7 @@ include Journeta::Common::Shutdown
 clear = %x{clear} # HACK
 
 peer_port = (2048 + rand( 2 ** 8))
-@journeta = Journeta::JournetaEngine.new(:peer_port => peer_port)
+@journeta = Journeta::Engine.new(:peer_port => peer_port)
 @journeta.start
 stop_on_shutdown(@journeta)
 

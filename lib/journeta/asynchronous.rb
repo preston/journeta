@@ -5,8 +5,10 @@
 
 require 'journeta/logger'
 
+
 module Journeta
   
+  # See Journeta::Engine
   class Asynchronous
     
     include Logger

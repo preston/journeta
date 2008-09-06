@@ -28,13 +28,13 @@ end
 #
 # You'll need to find an unused port if..
 # (1) you intend to run multiple peers on the same machine, or
-# (2) the default port (Journeta::JournetaEngine::DEFAULT_PEER_PORT)
+# (2) the default port (Journeta::Engine::DEFAULT_PEER_PORT)
 #     is otherwise already taken on your machine.
 #
 # :peer_handler -- A piece of logic you must specify to process objects sent to you from peers.
 # :groups -- Defines the peer types which care about the objects you broadcast. (Optional: by default, all peers will receive all your object broadcasts.)
 peer_port = (2048 + rand( 2 ** 8))
-journeta = Journeta::JournetaEngine.new(:peer_port => peer_port, :peer_handler => ExampleHandler.new, :groups => ['im_example'])
+journeta = Journeta::Engine.new(:peer_port => peer_port, :peer_handler => ExampleHandler.new, :groups => ['im_example'])
 
 
 # Let the magic begin!
@@ -45,7 +45,7 @@ journeta.start
 include Journeta::Common::Shutdown
 stop_on_shutdown(journeta)
 
-# Alternatively, you can stop the engine manually by calling +JournetaEngine#stop+.
+# Alternatively, you can stop the engine manually by calling +Engine#stop+.
 # Do this before exiting to broadcast a message stating you are going offline as a courtesy to your peers, like so..
 # @journeta.stop
 

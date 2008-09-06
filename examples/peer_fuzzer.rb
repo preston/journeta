@@ -14,13 +14,13 @@ require 'pp'
 
 # We'll join all group to invoke the maximum amount of nastiness.
 # :groups => nil
-@journeta = JournetaEngine.new
+@journeta = Engine.new
 
 puts "Starting malicious peer..."
 @journeta.start
 
 puts "Finding peers..."
-sleep JournetaEngine::DEFAULT_PRESENCE_PERIOD + 2
+sleep Engine::DEFAULT_PRESENCE_PERIOD + 2
 
 puts "Known groups.."
 pp @journeta.known_groups

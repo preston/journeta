@@ -4,7 +4,7 @@
 
 # The root namespace for the entire #Journeta library.
 # See..
-#  * Journeta::JournetaEngine
+#  * Journeta::Engine
 #  * http://journeta.rubyforge.org
 module Journeta
   
@@ -12,7 +12,7 @@ module Journeta
   # objects running asynchronously to the primary application +Thread+. Use of this fascade
   # requires a minimal amount of lifecycle management on your part to start and stop the
   # engine at appropriate times. (Usually only at application startup and shutdown, respectively.)
-  class JournetaEngine
+  class Engine
     
     include Logger
     

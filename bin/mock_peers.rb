@@ -11,7 +11,7 @@ COUNT = 5
 puts "Creating #{COUNT} mock peers."
 instances = []
 for i in 1..COUNT
-  n = JournetaEngine.new(:peer_port => (12345 + i))
+  n = Engine.new(:peer_port => (12345 + i))
   instances.push n
   n.start
 end

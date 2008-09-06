@@ -8,7 +8,7 @@ include Journeta
 
 #puts "Threads before start: #{Thread.count}"
 
-j = JournetaEngine.new
+j = Engine.new
 j.start
 sleep 10
 j.stop

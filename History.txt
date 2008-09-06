@@ -1,6 +1,7 @@
 == 0.1.0 2008-09-05
 
-* Added JournetaEngine.known_peers
+* Renamed Journeta::JournetaEngine to Journeta::Engine
+* Added Engine.known_peers
 * Peer handler interface changed from 'handle(event)' to 'call(event)' to support raw Proc objects.
 * examples/network_status.rb
 * Documentation updates.
