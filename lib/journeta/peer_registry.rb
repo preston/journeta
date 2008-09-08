@@ -3,18 +3,28 @@ require 'thread'
 module Journeta
   
   # Responsible for keeping in-memory metadata on known peers in the form of PeerConnections.
-  # TODO Add dead peer reaper functionality.
-  class PeerRegistry #<< Journeta::Asynchronous
+  class PeerRegistry < Journeta::Asynchronous
     
     include Logger
     
     # {<:uuid> => PeerConnection}
     #    attr_reader :peers
     
+    
+    # Minimum period between reaper invocations, in seconds.
+    #attr_accessor :reaper_period
+    
+    # The minimun time, in seconds, after a given presence notification arrive that it may be considered for reaping. 
+    #attr_accessor :reaper_tolerance
+    
+    @@DEFAULT_REAPER_PERIOD = 1
+    
     def initialize(engine)
-      @engine = engine
+      super(engine)
       @peers = {}
       @mutex = Mutex.new
+      @reaper_period = @@DEFAULT_REAPER_PERIOD
+      @reaper_tolerance = engine.presence_period + 2.0
     end
     
     def clear
@@ -22,6 +32,26 @@ module Journeta
         h.clear
       end
     end
+    
+    def go
+      loop do
+        @mutex.synchronize do
+          to_reap = []
+          @peers.each do |uuid, peer|
+            tolerance = Time.now - @reaper_tolerance
+            if peer.updated_at < tolerance
+              to_reap << peer
+            end
+          end
+          to_reap.each do |peer|
+            peer.stop
+            @peers.delete peer.uuid
+          end
+        end
+        sleep @reaper_period
+      end
+    end
+    
     
     def all(all_groups = false)
       r = nil
@@ -46,6 +76,8 @@ module Journeta
         else
           putsd "Updating peer #{peer.uuid}."
           peer.stop
+          # Make sure we're not overriding the creation date of the original entry.
+          peer.created_at = nil
           existing.update_settings peer
         end
         

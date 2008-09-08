@@ -23,7 +23,9 @@ puts "Finding peers..."
 sleep Engine::DEFAULT_PRESENCE_PERIOD + 2
 
 puts "Known groups.."
-pp @journeta.known_groups
+@journeta.known_groups.each do |g|
+  p g
+end
 
 def fuzz(data)
   @journeta.send_to_known_peers(data)

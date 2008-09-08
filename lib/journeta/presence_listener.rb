@@ -45,6 +45,7 @@ module Journeta
               peer.uuid = m.uuid
               peer.version = m.version
               peer.groups = m.groups
+              peer.created_at = peer.updated_at = Time.now
               
               # We should not start the #PeerConnection before registering because
               # the peer might already be registered. In this case, we'd have wasted a thread,

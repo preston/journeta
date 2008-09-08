@@ -29,9 +29,13 @@ module Journeta
               while more = session.gets
                 data += more
               end
-              msg     = YAML::load(data)
-              h = @engine.peer_handler
-              h.call msg              
+              begin
+                msg     = YAML::load(data)
+                h = @engine.peer_handler
+                h.call msg              
+              rescue
+                putsd "YAML could not be deserialized! The data will not be passed up to the application."
+              end
             end
           end
         rescue

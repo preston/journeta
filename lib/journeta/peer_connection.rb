@@ -22,9 +22,8 @@ module Journeta
     
     # integer.
     attr_accessor :peer_port
-    
-    
-    
+
+
     def initialize(engine)
       super(engine)
       @queue = Queue.new

@@ -95,6 +95,8 @@ module Journeta
     # Starts sub-comonents which have their own life-cycle requirements.
     # The registry itself does not have a dedication thread, and thus does not need to be started.
     def start
+      @peer_registry.start
+      
       # Start a peer listener first so we don't risk missing a connection attempt.
       putsd "Starting #{@peer_listener.class.to_s}"
       @peer_listener.start
@@ -121,7 +123,8 @@ module Journeta
       # While the registry does not have its own thread, it is in charge of managing
       # +PeerConnection+s which DO have individual threads. This call
       # forcefully terminates all connections, which may or may not be actively passing data.
-      @peer_registry.unregister_all
+#      @peer_registry.unregister_all
+      @peer_registry.stop
     end
     
     # Sends the given object to all peers in one of the #groups associated with this instance.
@@ -148,7 +151,7 @@ module Journeta
     def known_groups()
       s = Set.new
       self.known_peers(true).each do |uuid, peer|
-        s.merge peer.groups
+        s.merge peer.groups unless peer.groups.nil?
       end
       s.to_a
     end

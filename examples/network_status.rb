@@ -23,9 +23,15 @@ begin
   puts "Displays infromation on all known peers."
   puts "Updated: #{Time.now}"
   puts "\n"
-  puts "UUID\t\tVersion\t\tIP Address\t\tPort\t\tDiscovered\t\tUpdated\t\tGroups\n"
-  all.keys.sort.each do |uuid|
-    puts "#{all[uuid].uuid}\t#{all[uuid].version}\t\t#{all[uuid].ip_address}\t\t#{all[uuid].peer_port}\t\t#{all[uuid].created_at || 'TODO'}\t\t#{all[uuid].updated_at || 'TODO'}\t[#{all[uuid].groups.join(',')}]"
+  puts "UUID\t\tVersion\t\tIP Address\t\tPort\t\tDiscovered\t\t\tUpdated\t\t\t\tGroups\n"
+#  require 'pp'
+#  pp all
+  all.each do |uuid, peer|
+  groups = '...'
+  if !all[uuid].groups.nil?
+  groups = all[uuid].groups.join(',')
+  end
+    puts "#{all[uuid].uuid}\t#{all[uuid].version}\t\t#{all[uuid].ip_address}\t\t#{all[uuid].peer_port}\t\t#{all[uuid].created_at || 'TODO'}\t#{all[uuid].updated_at || 'TODO'}\t[#{groups}]"
   end
   sleep(0.2)
 end     while true

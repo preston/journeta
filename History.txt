@@ -1,5 +1,7 @@
-== 0.1.2 2008-09-??
+== 0.1.2 2008-09-08
 
+* Preemptive peer reaping. Peers now automatically "expire" from the local registry when they haven't been heard from in a while.
+* Non-significant fixes.
 
 
 == 0.1.1 2008-09-05

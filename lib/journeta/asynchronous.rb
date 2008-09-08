@@ -15,15 +15,11 @@ module Journeta
     
     attr_accessor :thread, :engine
     
-    
-    
     def initialize(engine)
       @engine = engine
       @thread_lock = Mutex.new
       @thread = nil
-    end
-    
-    
+    end   
     
     # Start the +Thread+ for this instance, iff not already running.
     def start
@@ -52,7 +48,7 @@ module Journeta
     def stop
       @thread_lock.synchronize do
         if @thread
-          Thread.kill(@thread)
+          Thread.kill(@thread) # nasty pants!
           @thread.join
           @thread = nil
         end
