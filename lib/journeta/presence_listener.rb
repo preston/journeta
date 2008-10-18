@@ -34,29 +34,33 @@ module Journeta
         loop do
           # Why 1024? umm.. because it's Thursday!
           data, meta = socket.recvfrom 1024
-          Thread.new(data) {
+          Thread.new(data, meta) do |data, meta|
             event = YAML.load(data)
             if event.uuid != @engine.uuid
-              m = YAML::load(data)
-              peer = PeerConnection.new @engine
-              # Why is this always [2]? Not sure.. they should have returned a hash instead.
-              peer.ip_address = meta[2]
-              peer.peer_port = m.peer_port
-              peer.uuid = m.uuid
-              peer.version = m.version
-              peer.groups = m.groups
-              peer.created_at = peer.updated_at = Time.now
+              begin
+                m = YAML::load(data)
+                peer = PeerConnection.new @engine
+                # Why is this always [2]? Not sure.. they should have returned a hash instead.
+                peer.ip_address = meta[2]
+                peer.peer_port = m.peer_port
+                peer.uuid = m.uuid
+                peer.version = m.version
+                peer.groups = m.groups
+                peer.created_at = peer.updated_at = Time.now
               
-              # We should not start the #PeerConnection before registering because
-              # the peer might already be registered. In this case, we'd have wasted a thread,
-              # so we'll let the registry handle startup (if it happens at all.)
-              #
-              # peer.start
+                # We should not start the #PeerConnection before registering because
+                # the peer might already be registered. In this case, we'd have wasted a thread,
+                # so we'll let the registry handle startup (if it happens at all.)
+                #
+                # peer.start
               
-              # TODO validate peer entry is sane before registering it
-              @engine.register_peer peer
+                # TODO validate peer entry is sane before registering it
+                @engine.register_peer peer
+              rescue => e
+                putsd "Error during peer registration: #{e.message}"
+              end
             end
-          }
+          end
           # putsd "Event received!"
         end
       ensure

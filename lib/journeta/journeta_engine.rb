@@ -160,6 +160,7 @@ module Journeta
     # the existing record will be updated and given instance #PeerConnection#stop'd.
     # This prevents pending outbound data from being accidentally dropped.
     def register_peer(peer)
+      putsd "Registering peer: #{peer.uuid}"
       peer_registry.register(peer)
     end
     

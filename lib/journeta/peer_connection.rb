@@ -80,9 +80,9 @@ module Journeta
         #
         # Sorry that this is deceptively complicated. It's a design gotcha! :)
         putsd "Peer #{uuid} has gone away. Deregistering in the background."
-        Thread.new {
-          @engine.unregister_peer(self)
-        }
+        Thread.new(self) do |me|
+          @engine.unregister_peer(me)
+        end
       end
     end
     
