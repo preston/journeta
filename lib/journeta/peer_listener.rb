@@ -20,10 +20,10 @@ module Journeta
         
         begin
           loop do             
-            session = socket.accept
             # We'll put the actual handling of the new session in the background so we 
             # can continue listening for new connections as soon as possible.
-            Thread.new do 
+            Thread.new(socket) do |socket| 
+              session = socket.accept
               data = ''
               # Read every last bit from the socket before passing off to the handler.
               while more = session.gets
