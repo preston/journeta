@@ -1,7 +1,11 @@
 
-== 0.1.5 2008-10-21
+
+== 0.1.6 2008-10-21
 
 * CRITICAL LIVELOCK FIX. DO NOT USE 0.1.4 AND 0.1.3.
+* Added support for :peer_registered_handler.
+* Added support for :peer_unregistered_handler.
+* Added support for :peer_updated_handler.
 
 == 0.1.2 2008-09-08
 
