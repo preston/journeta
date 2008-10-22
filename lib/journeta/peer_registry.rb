@@ -8,6 +8,7 @@ module Journeta
     include Logger
     
     # {<:uuid> => PeerConnection}
+    # Disabled to prevent non-thread-safe access, since this is a synchronized object.
     #    attr_reader :peers
     
     
@@ -46,6 +47,7 @@ module Journeta
           to_reap.each do |peer|
             peer.stop
             @peers.delete peer.uuid
+            send_peer_unregistered(peer)
           end
         end
         sleep @reaper_period
@@ -73,12 +75,14 @@ module Journeta
           putsd "Adding peer #{peer.uuid}."
           peer.start
           @peers[peer.uuid] = peer
+          send_peer_registered(peer)
         else
           putsd "Updating peer #{peer.uuid}."
           peer.stop
           # Make sure we're not overriding the creation date of the original entry.
           peer.created_at = nil
           existing.update_settings peer
+          send_peer_updated(existing)
         end
         
       end
@@ -128,6 +132,24 @@ module Journeta
           p.send_payload(payload)
         end
       end
+    end
+    
+    def send_peer_registered(peer)
+      return if peer.nil?
+      handler = @engine.peer_registered_handler
+      Thread.new(handler, peer) {|h, peer| h.call(peer)}
+    end
+    
+    def send_peer_updated(peer)
+      return if peer.nil?
+      handler = @engine.peer_updated_handler
+      Thread.new(handler, peer) {|h, peer| h.call(peer)}
+    end
+    
+    def send_peer_unregistered(peer)
+      return if peer.nil?
+      handler = @engine.peer_unregistered_handler
+      Thread.new(handler, peer) {|h, peer| h.call(peer)}      
     end
     
     protected

@@ -47,6 +47,15 @@ module Journeta
     # Application logic which processes session data.
     attr_reader :peer_handler
     
+    # Application logic which gets notified when a peer comes online.
+    attr_reader :peer_registered_handler
+
+    # Application logic which gets notified when a peer comes online.
+    attr_reader :peer_updated_handler
+
+    # Application logic which gets notified when a peer goes offline.
+    attr_reader :peer_unregistered_handler
+    
     # The TCP port used to receive direct peer messages.
     attr_reader :peer_port
     
@@ -79,6 +88,9 @@ module Journeta
       
       @peer_port = configuration[:peer_port] || DEFAULT_PEER_PORT
       @peer_handler = configuration[:peer_handler] || DefaultPeerHandler.new
+      @peer_registered_handler = configuration[:peer_registered_handler] || DefaultPeerRegisteredHandler.new
+      @peer_updated_handler = configuration[:peer_updated_handler] || DefaultPeerUpdatedHandler.new
+      @peer_unregistered_handler = configuration[:peer_unregistered_handler] || DefaultPeerUnregisteredHandler.new
 
       @presence_port = configuration[:presence_port] || DEFAULT_PRESENCE_PORT    
       @presence_address = configuration[:presence_address] || DEFAULT_PRESENCE_NETWORK      
