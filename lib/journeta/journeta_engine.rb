@@ -159,7 +159,15 @@ module Journeta
     def known_peers(all_groups = false)
       peer_registry.all(all_groups)
     end
-    
+
+    def known_peers_in_group(group_name)
+      s = {}
+      self.known_peers(true).each do |uuid, peer|
+        s[uuid] = peer if peer.groups.include?(group_name)
+      end
+      s
+    end
+
     def known_groups()
       s = Set.new
       self.known_peers(true).each do |uuid, peer|
