@@ -1,146 +1,65 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
-        <link rel="stylesheet" href="stylesheets/reset.css" type="text/css" media="screen" />
-        <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Journeta P2P :: Ruby Peer Discovery &amp; Message Passing</title>
-    </head>
-    <body>
-        <div id="header_side">
-        </div>
-        <div id="header">
-            <div id="name">
-                Journeta
-            </div>
-            <ol>
-                <li>
-                    <span id="tagline">Ruby P2P for your LAN, yo.</span>
-                </li>
-                <li>
-                    <a href="http://rubyforge.org/frs/?group_id=4138" class="numbers">[RubyForge Project]</a>
-                </li>
-                <li>
-                    <a href="http://journeta.rubyforge.org/rdoc">[RDocs]</a>
-                </li>
-                <li>
-                    <a href="mailto:support@openrain.com">[Email]</a>
-                </li>
-                <li>
-                    <a href="http://www.openrain.com/">[Developers]</a>
-                </li>
-            </ol>
-        </div>
-        <div id="content_wrapper">
-            <div id="content">
-                <div id="banner">
-                    <div id="blurb">
-                        <em>Journeta</em>
-                        is a dirt simple library for <em>peer discovery</em>
-                        and <em>message passing</em>
-                        between <em>Ruby</em>
-                        applications on a LAN.
-                    </div>
-                    <div class="clear">
-                        &nbsp;
-                    </div>
-                </div>
-                
-                <div id="guts">
-					
-                	<div id="sidebar">
-	                    <h1>Installing</h1>
-	                    <div class="code">
-	                        sudo gem install journeta
-	                    </div>
-	                    <h2>Examples</h2>
-	                    <p>
-	                        Several annotated code snippets can be found in the “examples” directory of the gem. Open two (or more) consoles and run and following on each for a completely decentralized, zero-configuration-required chat server.
-	                    </p>
-	                    <div class="code">
-	                        ruby examples/instant_messenger.rb
-	                    </div>Sweeeeet.
-	                </div>
-	
-	               <div>
-                        <h2>Features</h2>
-                        <p>
-                            <ol>
-                                <li>
-                                    <h3>Trivial to integrate</h3> Add peer discovery to your application in 10 lines of code or less.
-                                </li>
-                                <li>
-                                    <h3>Automatic peer discovery</h3> Use Journeta::Engine#known_peers to find other applications on the network.
-                                </li>
-                                <li>
-                                    <h3>Object broadcast</h3> Send arbitrary Ruby objects to peers. 
-                                </li>
-                                <li>
-                                    <h3>Direct objects transfer</h3> Send directly to a given peer UUID.
-                                </li>
-                                <li>
-                                    <h3>Cross platform</h3>Runs on Linux and OS X.
-                                </li>
-                                <li>
-                                    <h3>Pure Ruby</h3> No native dependancies!
-                                </li>
-                            </ol>
-                        </p>
-                    </div>
+<head>
+  <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+      Journeta
+  </title>
+  <script src="javascripts/rounded_corners_lite.inc.js" type="text/javascript"></script>
+<style>
 
-   
-                    <div>
-                        <h2>Peers</h2>
-                        <p>
-                            A “peer” is represented by a “start”ed instance of JournetaEngine in your Ruby application. You’ll probably want just one, but may run more if it makes sense for your application to logically represent two (or more) peers simultaneously, or want to run multiple instances on the same machine.
-                        </p>
-                        <p>
-                            Any object that can be serialized via YAML can be sent and received by Journeta. Received messages (a.k.a. objects defined by your application sent from a peer running the same code) are passed into a message handler you provide in an event-based manner. Messages do not come from your applications main thread!
-                        </p>
-                    </div>
-                    <div>
-                        <h2>Journeta is simple because it doesn’t..</h2>
-                        <ol>
-                            <li>
-                                <h3>Work outside the LAN</h3>Presence broadcasts don’t propagate to the internet, and there is no such thing as a “server” in Journeta.
-                            </li>
-                            <li>
-                                <h3>Currently use secure channels</h3>All network messages are currently sent in raw form across the network, and messages from peers are implicitly authorized. Engine-level support for encryption and authentication will be coming in the future.
-                            </li>
-                            <li>
-                                <h3>Dictate your message handling model</h3>Remember that events sent to your message handler each come from their own thread, and sometimes concurrently. Update only thread-safe data structure and/or design out the problem.
-                            </li>
-                            <li>
-                                <h3>Guarantee backwards compatibility</h3>No formal messaging specifications here. We will try to maintain interface compatibility between point releases (for example between 0.1.0 and 0.1.1), but we don't normally compatibility test across releases so your milage may vary.
-                            </li>
-                            <li>
-                                <h3>Guarantee message delivery</h3>Peers are free to go down at any time, or may flat-out refuse to ignore your presence.
-                            </li>
-                        </ol>
-                    </div>
-                    <div>
-                        <h2>Coming Soon</h2>
-                        <ol>
-                            <li>
-                                <h3>P2P encryption and handshaking</h3>Communication currently are not secure and should only be used in a trusted environment.
-                            </li>
-                            <li>
-                                <h3>JRuby support</h3>We need your support to change a couple lines of Ruby socket API code to something JRuby can handle.
-                            </li>
-                            <li>
-                                <h3>Additional engine hooks</h3>This will allow you to tap into internal workings of Journeta to override default event handling mechanisms. For example, you'll be able to override the default (YAML) serializer.
-                            </li>
-                            <li>
-                                <h3>Preemptive peer reaping</h3>To remove peers from the engine if they have not been heard from in a while.
-                            </li>
-                            <li>
-                                <h3>Failure callbacks</h3>To allow your application to respond to peers going down before all outgoing information has been sent.
-                            </li>
-                        </ol>
-                    </div>
-					<div class="clear">&nbsp;</div>
-                </div>
-            </div>
-        </div>
-    </body>
+</style>
+  <script type="text/javascript">
+    window.onload = function() {
+      settings = {
+          tl: { radius: 10 },
+          tr: { radius: 10 },
+          bl: { radius: 10 },
+          br: { radius: 10 },
+          antiAlias: true,
+          autoPad: true,
+          validTags: ["div"]
+      }
+      var versionBox = new curvyCorners(settings, document.getElementById("version"));
+      versionBox.applyCornersToAll();
+    }
+  </script>
+</head>
+<body>
+<div id="main">
+
+    <h1>Journeta</h1>
+    <div id="version" class="clickable" onclick='document.location = "http://rubyforge.org/projects/journeta"; return false'>
+      <p>Get Version</p>
+      <a href="http://rubyforge.org/projects/journeta" class="numbers">0.1.7</a>
+    </div>
+    <h2>Ruby P2P for your <span class="caps">LAN</span>, yo.</h2>
+<p>Journeta is a library for passing objects between automatically discovered and connected Ruby applications on a <span class="caps">LAN</span>.</p>
+<h2>Peers</h2>
+<p>A &#8220;peer&#8221; is represented by a &quot;start&quot;ed instance of Engine in your Ruby application. You&#8217;ll probably want just one, but may run more if it makes sense for your application to logically represent two (or more) peers simultaneously.</p>
+<p>Any object that can be serialized via <span class="caps">YAML</span> can be sent and received by Journeta. Received messages (a.k.a. objects defined by your application sent from a peer) are passed into a message handler you define, in an event-based manner. Message do not come from your applications main thread.</p>
+<h2>Journeta Is Simple Because It Doesn&#8217;t..</h2>
+<ol>
+<li><b>Work outside the <span class="caps">LAN</span></b>. Presence broadcasts don&#8217;t propagate to the internet, and there is no such thing as a &#8220;server&#8221; in Journeta.</li>
+<li><b>Attempt to be secure</b>, as all network messages are sent in text. Messages from peers are implicitly trusted for truthiness.</li>
+<li><b>Solve Ruby&#8217;s threading issues</b>, nor dictate your applications thread handling design. Until Ruby uses native threads, high-performance uses of Journeta will likely be limited. Remember that stuff sent to your message handler is not coming from your applications main thread.</li>
+<li><b>Provide backwards compatibility</b>, or for the matter, compatibility with anything other than peers of the same Journeta version. No formal messaging specifications here. Different versions of Journeta may or may not be protocol compatible; we don&#8217;t know and we don&#8217;t keep track.</li>
+<li><b>Guarantee message delivery</b>, since <span class="caps">UDP</span> is used for some types of communications, and peers are free to go down at any time.</li>
+</ol>
+<h2>Installing</h2>
+<pre syntax="ruby">sudo gem install journeta</pre>
+<h2>The Basics</h2>
+<p>Several annotated code snippets can be found in the &#8220;examples&#8221; directory of the gem. Open two consoles, and run this script (it comes with the gem) on each. You should see messages on each console showing received presence events. Hit <enter> in one consoles to shut down the peer, and look for an event message in the other. Sweeeeet.</p>
+<p>Email <a href="mailto:preston.lee@openrain.com">Preston Lee</a> and read the blog.</p>
+    <p class="coda">
+      <!--a href="mailto:drnicwilliams@gmail.com">Dr Nic</a>, 17th October 2008<br-->
+      Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
+    </p>
+</div>
+
+<!-- insert site tracking codes here, like Google Urchin -->
+
+</body>
 </html>

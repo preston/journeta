@@ -1,4 +1,5 @@
-
+== 0.1.7 2008-10-29
+* Added JournetaEngine#known_peers_in_group(group_name), which returns a hash {uuid => peer} of peers in that group.
 
 == 0.1.6 2008-10-21
 
