@@ -48,8 +48,8 @@ module Journeta
                 peer.groups = m.groups
                 peer.created_at = peer.updated_at = Time.now
               
-                # We should not start the #PeerConnection before registering because
-                # the peer might already be registered. In this case, we'd have wasted a thread,
+                # We should not start the #PeerConnection before registering because a running
+                # PeerConnection might already be registered. In this case, we'd have wasted a thread,
                 # so we'll let the registry handle startup (if it happens at all.)
                 #
                 # peer.start
