@@ -21,11 +21,25 @@ module Journeta
       begin
         socket = UDPSocket.open
         begin
-          if PLATFORM[/linux/i]
-            socket.setsockopt( Socket::SOL_SOCKET, Socket::SO_REUSEADDR, [1].pack("i_") )
-          else
-            # socket.setsockopt(Socket::IPPROTO_IP, Socket::IP_TTL, [1].pack('i')) # Preston's original config for OS X.
-            socket.setsockopt( Socket::SOL_SOCKET, Socket::SO_REUSEPORT, [1].pack("i_") ) # Remi's suggested default.
+          if defined?(PLATFORM) # v1.8 (and prior?) MRI and JRuby on Linux, Windows, OSX and Solaris.
+            if PLATFORM.match(/linux/i)
+              socket.setsockopt( Socket::SOL_SOCKET, Socket::SO_REUSEADDR, [1].pack("i_") )
+            elsif PLATFORM.match(/java/i)
+              # puts 'Running on a JVM!'
+              socket.setsockopt( Socket::SOL_SOCKET, Socket::SO_REUSEADDR, [1].pack("i_") )
+              # socket.setsockopt(Socket::IPPROTO_IP, Socket::IP_TTL, [1].pack('i'))
+              # socket.setsockopt( Socket::SOL_SOCKET, Socket::SO_REUSEPORT, [1].pack("i_") )
+            else
+              # socket.setsockopt(Socket::IPPROTO_IP, Socket::IP_TTL, [1].pack('i')) # Preston's original config for OS X.
+              socket.setsockopt( Socket::SOL_SOCKET, Socket::SO_REUSEPORT, [1].pack("i_") ) # Remi's suggested default.
+            end
+          elsif defined?(RUBY_PLATFORM) # Ruby 1.9 MRI
+            if RUBY_PLATFORM.match(/linux/i)
+              socket.setsockopt( Socket::SOL_SOCKET, Socket::SO_REUSEADDR, [1].pack("i_") )
+            else
+              # socket.setsockopt(Socket::IPPROTO_IP, Socket::IP_TTL, [1].pack('i'))
+              socket.setsockopt( Socket::SOL_SOCKET, Socket::SO_REUSEPORT, [1].pack("i_") ) # Remi's suggested default.
+            end
           end
         rescue
           puts "Native socket library not supported on this platform. Please submit a patch! Exiting since this is fatal :("
