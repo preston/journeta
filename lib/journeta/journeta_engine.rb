@@ -1,10 +1,9 @@
 # Copyright © 2011 Preston Lee Ventures, LLC. All rights reserved.
 #
-# Preston Lee <preston.lee@openrain.com>
-
 # The root namespace for the entire #Journeta library.
 # See..
-#  * Journeta::Engine
+#  * +Journeta::Engine+
+#  * https://github.com/preston/journeta
 #  * http://journeta.rubyforge.org
 module Journeta
   
