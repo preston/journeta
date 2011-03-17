@@ -1,4 +1,4 @@
-# Copyright © 2007 OpenRain, LLC. All rights reserved.
+# Copyright © 2011 Preston Lee Ventures, LLC. All rights reserved.
 #
 # Preston Lee <preston.lee@openrain.com>
 
@@ -19,7 +19,7 @@ module Journeta
     # A supposedly universally unique id for this instance.
     attr_reader :uuid
     
-    # An array of peer network names. Ex: ['OpenRain Test', 'quick_chat_app']
+    # An array of peer network names. Ex: ['Preston Lee Ventures Test', 'quick_chat_app']
     # An empty array indicates implicit membership in all discovered groups.
     attr_reader :groups
     

@@ -1,4 +1,9 @@
 #!/usr/bin/env ruby
+
+banner =<<EOL
+Sends bogus data to all peer on the network. Test your application
+with this tool to verify it can handle these cases correctly.
+
 current_dir = File.dirname(File.expand_path(__FILE__))
 lib_path = File.join(current_dir, '..', 'lib')
 $LOAD_PATH.unshift lib_path

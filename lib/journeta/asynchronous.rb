@@ -1,4 +1,4 @@
-# Copyright © 2007 OpenRain, LLC. All rights reserved.
+# Copyright © 2011 Preston Lee Ventures, LLC. All rights reserved.
 #
 # Preston Lee <preston.lee@openrain.com>
 

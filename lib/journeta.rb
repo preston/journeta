@@ -1,4 +1,4 @@
-# Copyright 2009, OpenRain, LLC. All rights reserved.
+# Copyright 2009, Preston Lee Ventures, LLC. All rights reserved.
 
 require 'yaml'
 require 'set'

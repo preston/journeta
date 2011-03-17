@@ -1,16 +1,16 @@
 #!/usr/bin/env ruby
-#current_dir = File.dirname(File.expand_path(__FILE__))
-#lib_path = File.join(current_dir, '..', 'lib')
-#$LOAD_PATH.unshift lib_path
+current_dir = File.dirname(File.expand_path(__FILE__))
+lib_path = File.join(current_dir, '..', 'lib')
+$LOAD_PATH.unshift lib_path
 
 #require File.dirname(__FILE__) + '/../lib/journeta'
+# require 'shoes'
 
 Shoes.setup do
   gem 'journeta'
   gem 'hoe'
 end
 
-require 'journeta'
 
 
     class EditorEvent

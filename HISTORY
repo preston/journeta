@@ -1,3 +1,14 @@
+== 0.2.0 2011.03.17
+
+* JRuby 1.6 finally support! And with fully native threads!!!
+* Ruby 1.9 support. (Also with native threads.)
+* Ruby 1.8 no longer active supported. (Never worked well on the old MRI, anyway.)
+* Documentation updates and fixes.
+* Protocol-compatible with 0.1.x series.
+* Moving to "jeweler"-style packaging.
+* Refactoring versioning.
+* Still no great way to write deterministic tests for threaded components. :(  (Help!)
+
 == 0.1.7 2008-10-29
 * Added JournetaEngine#known_peers_in_group(group_name), which returns a hash {uuid => peer} of peers in that group.
 

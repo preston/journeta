@@ -1,4 +1,17 @@
 #!/usr/bin/env ruby
+
+banner =<<EOL
+An IRC-like, serverless instant messenger for local area networks.
+Fire up one or more of these on your local network-connected machine.
+Copyright 2011, Preston Lee. http://prestonlee.com
+
+	Usage: #{$0}
+
+EOL
+
+puts banner
+
+
 current_dir = File.dirname(File.expand_path(__FILE__))
 lib_path = File.join(current_dir, '..', 'lib')
 $LOAD_PATH.unshift lib_path

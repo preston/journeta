@@ -1,9 +1,11 @@
 module Journeta #:nodoc:
   module VERSION #:nodoc:
-    MAJOR = 0
-    MINOR = 1
-    TINY  = 7
 
-    STRING = [MAJOR, MINOR, TINY].join('.')
+		STRING = File.read(File.join(File.dirname(__FILE__), '..', '..', 'VERSION'))
+		
+    MAJOR = STRING.split('.')[0]
+    MINOR = STRING.split('.')[1]
+    TINY  = STRING.split('.')[2]
+
   end
 end

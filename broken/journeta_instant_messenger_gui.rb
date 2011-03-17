@@ -9,8 +9,6 @@ require 'journeta'
 include Journeta
 include Journeta::Common
 
-require 'rubygems'
-
 
 # Use UTF-8.
 $KCODE = 'u'

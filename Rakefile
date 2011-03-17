@@ -1,123 +1,57 @@
 require 'rubygems'
+require 'bundler'
+
+begin
+  Bundler.setup(:default, :development)
+rescue Bundler::BundlerError => e
+  $stderr.puts e.message
+  $stderr.puts "Run `bundle install` to install missing gems"
+  exit e.status_code
+end
 require 'rake'
-require 'rake/clean'
+
+require 'jeweler'
+Jeweler::Tasks.new do |gem|
+  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
+  gem.name = "journeta"
+  gem.homepage = "http://github.com/preston/journeta"
+  gem.license = "Apache 2.0"
+  gem.summary = %Q{A zero-configuration-required peer-to-peer (P2P) discovery and communications library for closed networks.}
+  gem.description = %Q{Journeta is a dirt simple peer discovery and message passing library for processes on the same LAN, requiring no advanced networking knowledge to use. Only core Ruby libraries are required, making the library fairly light. As all data is sent across the wire in YAML form, so any arbitrary Ruby object can be sent to peers, written in any language.}
+  gem.email = "conmotto@gmail.com"
+  gem.authors = ["Preston Lee"]
+  # Include your dependencies below. Runtime dependencies are required when using your gem,
+  # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
+  #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
+  #  gem.add_development_dependency 'rspec', '> 1.2.3'
+end
+Jeweler::RubygemsDotOrgTasks.new
+
 require 'rake/testtask'
-require 'rake/packagetask'
-require 'rake/gempackagetask'
+Rake::TestTask.new(:test) do |test|
+  test.libs << 'lib' << 'test'
+  test.pattern = 'test/**/test_*.rb'
+  test.verbose = true
+end
+
+require 'rcov/rcovtask'
+Rcov::RcovTask.new do |test|
+  test.libs << 'test'
+  test.pattern = 'test/**/test_*.rb'
+  test.verbose = true
+end
+
+task :default => :test
+
 require 'rake/rdoctask'
-require 'rake/contrib/rubyforgepublisher'
-require 'fileutils'
-require 'hoe'
+Rake::RDocTask.new do |rdoc|
+  # version = File.exist?('VERSION') ? File.read('VERSION') : ""
+	require File.dirname(__FILE__) + '/lib/journeta/version'
+	version = 
+	
 
-include FileUtils
-require File.join(File.dirname(__FILE__), 'lib', 'journeta', 'version')
-
-AUTHOR = 'Preston Lee'  # can also be an array of Authors
-EMAIL = "preston.lee@openrain.com"
-DESCRIPTION = "A zero-configuration-required peer-to-peer (P2P) discovery and communications library for closed networks."
-GEM_NAME = 'journeta' # what ppl will type to install your gem
-
-@config_file = "~/.rubyforge/user-config.yml"
-@config = nil
-def rubyforge_username
-  unless @config
-    begin
-      @config = YAML.load(File.read(File.expand_path(@config_file)))
-    rescue
-      puts <<-EOS
-ERROR: No rubyforge config file found: #{@config_file}"
-Run 'rubyforge setup' to prepare your env for access to Rubyforge
- - See http://newgem.rubyforge.org/rubyforge.html for more details
-      EOS
-      exit
-    end
-  end
-  @rubyforge_username ||= @config["username"]
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = "journeta #{version}"
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
 end
-
-RUBYFORGE_PROJECT = 'journeta' # The unix name for your project
-HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
-DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
-
-NAME = "journeta"
-REV = nil 
-# UNCOMMENT IF REQUIRED: 
-# REV = `svn info`.each {|line| if line =~ /^Revision:/ then k,v = line.split(': '); break v.chomp; else next; end} rescue nil
-VERS = Journeta::VERSION::STRING + (REV ? ".#{REV}" : "")
-CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']
-RDOC_OPTS = ['--quiet', '--title', 'journeta documentation',
-    "--opname", "index.html",
-    "--line-numbers", 
-    "--main", "README",
-    "--inline-source"]
-
-class Hoe
-  def extra_deps 
-    @extra_deps.reject { |x| Array(x).first == 'hoe' } 
-  end 
-end
-
-# Generate all the Rake tasks
-# Run 'rake -T' to see list of generated tasks (from gem root directory)
-hoe = Hoe.new(GEM_NAME, VERS) do |p|
-  p.author = AUTHOR 
-  p.description = DESCRIPTION
-  p.email = EMAIL
-  p.summary = DESCRIPTION
-  p.url = HOMEPATH
-  p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
-  p.test_globs = ["test/**/test_*.rb"]
-  p.clean_globs |= CLEAN  #An array of file patterns to delete on clean.
-  
-  # == Optional
-  p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
-  #p.extra_deps = []     # An array of rubygem dependencies [name, version], e.g. [ ['active_support', '>= 1.3.1'] ]
-  #p.spec_extras = {}    # A hash of extra values to set in the gemspec.
-end
-
-CHANGES = hoe.paragraphs_of('History.txt', 0..1).join("\n\n")
-PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "#{RUBYFORGE_PROJECT}/#{GEM_NAME}"
-hoe.remote_rdoc_dir = File.join(PATH.gsub(/^#{RUBYFORGE_PROJECT}\/?/,''), 'rdoc')
-
-desc 'Generate website files'
-task :website_generate do
-  Dir['website/**/*.txt'].each do |txt|
-    sh %{ ruby scripts/txt2html #{txt} > #{txt.gsub(/txt$/,'html')} }
-  end
-end
-
-desc 'Upload website files to rubyforge'
-task :website_upload do
-  host = "#{rubyforge_username}@rubyforge.org"
-  remote_dir = "/var/www/gforge-projects/#{PATH}/"
-  local_dir = 'website'
-  sh %{rsync -aCv #{local_dir}/ #{host}:#{remote_dir}}
-end
-
-desc 'Generate and upload website files'
-task :website => [:website_generate, :website_upload, :publish_docs]
-
-desc 'Release the website and new gem version'
-task :deploy => [:check_version, :website, :release] do
-  puts "Remember to create SVN tag:"
-  puts "svn copy svn+ssh://#{rubyforge_username}@rubyforge.org/var/svn/#{PATH}/trunk " +
-    "svn+ssh://#{rubyforge_username}@rubyforge.org/var/svn/#{PATH}/tags/REL-#{VERS} "
-  puts "Suggested comment:"
-  puts "Tagging release #{CHANGES}"
-end
-
-desc 'Runs tasks website_generate and install_gem as a local deployment of the gem'
-task :local_deploy => [:website_generate, :install_gem]
-
-task :check_version do
-  unless ENV['VERSION']
-    puts 'Must pass a VERSION=x.y.z release version'
-    exit
-  end
-  unless ENV['VERSION'] == VERS
-    puts "Please update your version.rb to match the release version, currently #{VERS}"
-    exit
-  end
-end
-
-
