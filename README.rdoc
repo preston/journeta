@@ -21,36 +21,31 @@ For insight into events internal to the library, start ruby with the `--debug` o
 == Use
 
 
- examples/instant_messenger.rb
+ journeta_instant_messenger.rb
  
     A completely distributed, zero-configuration-required chat room script.
     Fire up several instances in separate terminals. Multiple instances on the same machine is ok.
     Everything you type will automatically be sent to all other instances on the LAN!
-    Use `ruby --debug examples/instant_messenger.rb` for detailed internal event details.
+    Use `ruby --debug journeta_instant_messenger.rb` for detailed internal event details.
 
- examples/instant_messenger_gui.rb
+ journeta_network_status.rb
 
-	A GUI version of the above client. Require the wxruby gem. (`sudo gem install wxruby`)
+	Monitors the presence of all peers on the network.
 
- examples/queue_server.rb
- examples/queue_client.rb
+ journeta_queue_server.rb
+ journeta_queue_client.rb
 
 	A simple queue managed by a server. Each client produces jobs to be queued, and processes jobs
 	sent from the server(s). All nodes automatically find eachother. Try running multiples clients,
 	and then multiple servers. Notice that when you have N servers, each job gets run N times,
 	and not necessarilly by the same client!
-
- examples/network_status.rb
-
-	Monitors the presence of all peers on the network.
-
 		
 == Author
 
-Preston Lee <preston.lee at openrain d0t com>
-http://www.prestonlee.com
-http://www.openrain.com
-
+Preston Lee
+* http://www.prestonlee.com
+* https://www.github.com/preston
+* http://twitter.com/prestonism
 
 == Links
 

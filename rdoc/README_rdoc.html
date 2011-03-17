@@ -6,7 +6,7 @@
 <head>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
-	<title>File: README.txt [journeta rdoc]</title>
+	<title>File: README.rdoc [journeta rdoc]</title>
 
 	<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
 
@@ -39,7 +39,7 @@
 				<h3 class="section-header">Files</h3>
 				<ul>
 				
-					<li class="file"><a href="./README_txt.html">README.txt</a></li>
+					<li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
 				
 				</ul>
 			</div>
@@ -140,37 +140,44 @@ internal to the library, start ruby with the `&#8212;debug` options.
 </p>
 <h2>Use</h2>
 <pre>
- examples/instant_messenger.rb
+ journeta_instant_messenger.rb
  
     A completely distributed, zero-configuration-required chat room script.
     Fire up several instances in separate terminals. Multiple instances on the same machine is ok.
     Everything you type will automatically be sent to all other instances on the LAN!
-    Use `ruby --debug examples/instant_messenger.rb` for detailed internal event details.
+    Use `ruby --debug journeta_instant_messenger.rb` for detailed internal event details.
 
- examples/instant_messenger_gui.rb
+ journeta_network_status.rb
 
-        A GUI version of the above client. Require the wxruby gem. (`sudo gem install wxruby`)
+        Monitors the presence of all peers on the network.
 
- examples/queue_server.rb
- examples/queue_client.rb
+ journeta_queue_server.rb
+ journeta_queue_client.rb
 
         A simple queue managed by a server. Each client produces jobs to be queued, and processes jobs
         sent from the server(s). All nodes automatically find eachother. Try running multiples clients,
         and then multiple servers. Notice that when you have N servers, each job gets run N times,
         and not necessarilly by the same client!
-
- examples/network_status.rb
-
-        Monitors the presence of all peers on the network.
-
                 
 </pre>
 <h2>Author</h2>
 <p>
-Preston Lee <preston.lee at openrain d0t com> <a
-href="http://www.prestonlee.com">www.prestonlee.com</a> <a
-href="http://www.openrain.com">www.openrain.com</a>
+Preston Lee
 </p>
+<ul>
+<li><p>
+<a href="http://www.prestonlee.com">www.prestonlee.com</a>
+</p>
+</li>
+<li><p>
+<a href="https://www.github.com/preston">www.github.com/preston</a>
+</p>
+</li>
+<li><p>
+<a href="http://twitter.com/prestonism">twitter.com/prestonism</a>
+</p>
+</li>
+</ul>
 <h2>Links</h2>
 <p>
 How Journeta discovers peers using UDP multicasting.. <a

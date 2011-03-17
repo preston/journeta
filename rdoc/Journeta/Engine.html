@@ -115,7 +115,7 @@
 				<h3 class="section-header">Files</h3>
 				<ul>
 				
-					<li class="file"><a href="../README_txt.html">README.txt</a></li>
+					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
 				
 				</ul>
 			</div>
@@ -524,29 +524,29 @@ setup.
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 83</span>
- 83:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">configuration</span> ={})      
- 84:       <span class="ruby-comment cmt"># TODO make guaranteed to be unique.</span>
- 85:       <span class="ruby-ivar">@uuid</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:uuid</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">rand</span>(<span class="ruby-value">2</span> <span class="ruby-operator">**</span> <span class="ruby-value">31</span>)
- 86:       <span class="ruby-ivar">@groups</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:groups</span>]
- 87: 
- 88:       
- 89:       <span class="ruby-ivar">@peer_port</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_port</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PEER_PORT</span>
- 90:       <span class="ruby-ivar">@peer_handler</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_handler</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DefaultPeerHandler</span>.<span class="ruby-identifier">new</span>
- 91:       <span class="ruby-ivar">@peer_registered_handler</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_registered_handler</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DefaultPeerRegisteredHandler</span>.<span class="ruby-identifier">new</span>
- 92:       <span class="ruby-ivar">@peer_updated_handler</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_updated_handler</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DefaultPeerUpdatedHandler</span>.<span class="ruby-identifier">new</span>
- 93:       <span class="ruby-ivar">@peer_unregistered_handler</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_unregistered_handler</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DefaultPeerUnregisteredHandler</span>.<span class="ruby-identifier">new</span>
- 94: 
- 95:       <span class="ruby-ivar">@presence_port</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:presence_port</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PRESENCE_PORT</span>    
- 96:       <span class="ruby-ivar">@presence_address</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:presence_address</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PRESENCE_NETWORK</span>      
- 97:       <span class="ruby-ivar">@presence_period</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:presence_period</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PRESENCE_PERIOD</span>
- 98:       
- 99:       <span class="ruby-comment cmt"># Inversion of Control is used in the following components to allow for some semblance of testing.</span>
-100:       <span class="ruby-ivar">@peer_listener</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_listener</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Journeta</span><span class="ruby-operator">::</span><span class="ruby-constant">PeerListener</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
-101:       <span class="ruby-ivar">@peer_registry</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_registry</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">PeerRegistry</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
-102:       <span class="ruby-ivar">@presence_listener</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:presence_listener</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">PresenceListener</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
-103:       <span class="ruby-ivar">@presence_broadcaster</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:presence_broadcaster</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">PresenceBroadcaster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
-104:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 82</span>
+ 82:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">configuration</span> ={})      
+ 83:       <span class="ruby-comment cmt"># TODO make guaranteed to be unique.</span>
+ 84:       <span class="ruby-ivar">@uuid</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:uuid</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">rand</span>(<span class="ruby-value">2</span> <span class="ruby-operator">**</span> <span class="ruby-value">31</span>)
+ 85:       <span class="ruby-ivar">@groups</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:groups</span>]
+ 86: 
+ 87:       
+ 88:       <span class="ruby-ivar">@peer_port</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_port</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PEER_PORT</span>
+ 89:       <span class="ruby-ivar">@peer_handler</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_handler</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DefaultPeerHandler</span>.<span class="ruby-identifier">new</span>
+ 90:       <span class="ruby-ivar">@peer_registered_handler</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_registered_handler</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DefaultPeerRegisteredHandler</span>.<span class="ruby-identifier">new</span>
+ 91:       <span class="ruby-ivar">@peer_updated_handler</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_updated_handler</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DefaultPeerUpdatedHandler</span>.<span class="ruby-identifier">new</span>
+ 92:       <span class="ruby-ivar">@peer_unregistered_handler</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_unregistered_handler</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DefaultPeerUnregisteredHandler</span>.<span class="ruby-identifier">new</span>
+ 93: 
+ 94:       <span class="ruby-ivar">@presence_port</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:presence_port</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PRESENCE_PORT</span>    
+ 95:       <span class="ruby-ivar">@presence_address</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:presence_address</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PRESENCE_NETWORK</span>      
+ 96:       <span class="ruby-ivar">@presence_period</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:presence_period</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PRESENCE_PERIOD</span>
+ 97:       
+ 98:       <span class="ruby-comment cmt"># Inversion of Control is used in the following components to allow for some semblance of testing.</span>
+ 99:       <span class="ruby-ivar">@peer_listener</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_listener</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Journeta</span><span class="ruby-operator">::</span><span class="ruby-constant">PeerListener</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+100:       <span class="ruby-ivar">@peer_registry</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_registry</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">PeerRegistry</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+101:       <span class="ruby-ivar">@presence_listener</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:presence_listener</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">PresenceListener</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+102:       <span class="ruby-ivar">@presence_broadcaster</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:presence_broadcaster</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">PresenceBroadcaster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+103:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -583,14 +583,14 @@ setup.
 					<div class="method-source-code"
 						id="known-groups-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 171</span>
-171:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">known_groups</span>()
-172:       <span class="ruby-identifier">s</span> = <span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
-173:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">known_peers</span>(<span class="ruby-keyword kw">true</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">uuid</span>, <span class="ruby-identifier">peer</span><span class="ruby-operator">|</span>
-174:         <span class="ruby-identifier">s</span>.<span class="ruby-identifier">merge</span> <span class="ruby-identifier">peer</span>.<span class="ruby-identifier">groups</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">peer</span>.<span class="ruby-identifier">groups</span>.<span class="ruby-identifier">nil?</span>
-175:       <span class="ruby-keyword kw">end</span>
-176:       <span class="ruby-identifier">s</span>.<span class="ruby-identifier">to_a</span>
-177:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 170</span>
+170:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">known_groups</span>()
+171:       <span class="ruby-identifier">s</span> = <span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
+172:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">known_peers</span>(<span class="ruby-keyword kw">true</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">uuid</span>, <span class="ruby-identifier">peer</span><span class="ruby-operator">|</span>
+173:         <span class="ruby-identifier">s</span>.<span class="ruby-identifier">merge</span> <span class="ruby-identifier">peer</span>.<span class="ruby-identifier">groups</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">peer</span>.<span class="ruby-identifier">groups</span>.<span class="ruby-identifier">nil?</span>
+174:       <span class="ruby-keyword kw">end</span>
+175:       <span class="ruby-identifier">s</span>.<span class="ruby-identifier">to_a</span>
+176:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -624,10 +624,10 @@ record corresponding to this peer is not included.
 					<div class="method-source-code"
 						id="known-peers-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 159</span>
-159:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">known_peers</span>(<span class="ruby-identifier">all_groups</span> = <span class="ruby-keyword kw">false</span>)
-160:       <span class="ruby-identifier">peer_registry</span>.<span class="ruby-identifier">all</span>(<span class="ruby-identifier">all_groups</span>)
-161:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 158</span>
+158:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">known_peers</span>(<span class="ruby-identifier">all_groups</span> = <span class="ruby-keyword kw">false</span>)
+159:       <span class="ruby-identifier">peer_registry</span>.<span class="ruby-identifier">all</span>(<span class="ruby-identifier">all_groups</span>)
+160:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -658,14 +658,14 @@ record corresponding to this peer is not included.
 					<div class="method-source-code"
 						id="known-peers-in-group-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 163</span>
-163:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">known_peers_in_group</span>(<span class="ruby-identifier">group_name</span>)
-164:       <span class="ruby-identifier">s</span> = {}
-165:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">known_peers</span>(<span class="ruby-keyword kw">true</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">uuid</span>, <span class="ruby-identifier">peer</span><span class="ruby-operator">|</span>
-166:         <span class="ruby-identifier">s</span>[<span class="ruby-identifier">uuid</span>] = <span class="ruby-identifier">peer</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">peer</span>.<span class="ruby-identifier">groups</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">group_name</span>)
-167:       <span class="ruby-keyword kw">end</span>
-168:       <span class="ruby-identifier">s</span>
-169:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 162</span>
+162:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">known_peers_in_group</span>(<span class="ruby-identifier">group_name</span>)
+163:       <span class="ruby-identifier">s</span> = {}
+164:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">known_peers</span>(<span class="ruby-keyword kw">true</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">uuid</span>, <span class="ruby-identifier">peer</span><span class="ruby-operator">|</span>
+165:         <span class="ruby-identifier">s</span>[<span class="ruby-identifier">uuid</span>] = <span class="ruby-identifier">peer</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">peer</span>.<span class="ruby-identifier">groups</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">group_name</span>)
+166:       <span class="ruby-keyword kw">end</span>
+167:       <span class="ruby-identifier">s</span>
+168:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -701,11 +701,11 @@ being accidentally dropped.
 					<div class="method-source-code"
 						id="register-peer-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 182</span>
-182:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_peer</span>(<span class="ruby-identifier">peer</span>)
-183:       <span class="ruby-identifier">putsd</span> <span class="ruby-node">&quot;Registering peer: #{peer.uuid}&quot;</span>
-184:       <span class="ruby-identifier">peer_registry</span>.<span class="ruby-identifier">register</span>(<span class="ruby-identifier">peer</span>)
-185:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 181</span>
+181:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_peer</span>(<span class="ruby-identifier">peer</span>)
+182:       <span class="ruby-identifier">putsd</span> <span class="ruby-node">&quot;Registering peer: #{peer.uuid}&quot;</span>
+183:       <span class="ruby-identifier">peer_registry</span>.<span class="ruby-identifier">register</span>(<span class="ruby-identifier">peer</span>)
+184:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -741,11 +741,11 @@ value is undefined.
 					<div class="method-source-code"
 						id="send-to-known-peers-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 145</span>
-145:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_to_known_peers</span>(<span class="ruby-identifier">payload</span>)
-146:       <span class="ruby-comment cmt"># Delegate directly.</span>
-147:       <span class="ruby-identifier">peer_registry</span>.<span class="ruby-identifier">send_to_known_peers</span>(<span class="ruby-identifier">payload</span>)
-148:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 144</span>
+144:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_to_known_peers</span>(<span class="ruby-identifier">payload</span>)
+145:       <span class="ruby-comment cmt"># Delegate directly.</span>
+146:       <span class="ruby-identifier">peer_registry</span>.<span class="ruby-identifier">send_to_known_peers</span>(<span class="ruby-identifier">payload</span>)
+147:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -779,11 +779,11 @@ return value is undefined.
 					<div class="method-source-code"
 						id="send-to-peer-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 152</span>
-152:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_to_peer</span>(<span class="ruby-identifier">peer_uuid</span>, <span class="ruby-identifier">payload</span>)
-153:       <span class="ruby-comment cmt"># Delegate directly.</span>
-154:       <span class="ruby-identifier">peer_registry</span>.<span class="ruby-identifier">send_to_peer</span>(<span class="ruby-identifier">peer_uuid</span>, <span class="ruby-identifier">payload</span>)
-155:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 151</span>
+151:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_to_peer</span>(<span class="ruby-identifier">peer_uuid</span>, <span class="ruby-identifier">payload</span>)
+152:       <span class="ruby-comment cmt"># Delegate directly.</span>
+153:       <span class="ruby-identifier">peer_registry</span>.<span class="ruby-identifier">send_to_peer</span>(<span class="ruby-identifier">peer_uuid</span>, <span class="ruby-identifier">payload</span>)
+154:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -818,23 +818,23 @@ to be started.
 					<div class="method-source-code"
 						id="start-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 109</span>
-109:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start</span>
-110:       <span class="ruby-ivar">@peer_registry</span>.<span class="ruby-identifier">start</span>
-111:       
-112:       <span class="ruby-comment cmt"># Start a peer listener first so we don't risk missing a connection attempt.</span>
-113:       <span class="ruby-identifier">putsd</span> <span class="ruby-node">&quot;Starting #{@peer_listener.class.to_s}&quot;</span>
-114:       <span class="ruby-ivar">@peer_listener</span>.<span class="ruby-identifier">start</span>
-115:       
-116:       <span class="ruby-comment cmt"># Start listening for peer presence announcements next.</span>
-117:       <span class="ruby-identifier">putsd</span> <span class="ruby-node">&quot;Starting #{@presence_listener.class.to_s}&quot;</span>
-118:       <span class="ruby-ivar">@presence_listener</span>.<span class="ruby-identifier">start</span>
-119:       
-120:       <span class="ruby-comment cmt"># Now that we're all set up, start sending our own presence events</span>
-121:       <span class="ruby-comment cmt"># so peer can start sending us data!</span>
-122:       <span class="ruby-identifier">putsd</span> <span class="ruby-node">&quot;Starting #{@presence_broadcaster.class.to_s}&quot;</span>
-123:       <span class="ruby-ivar">@presence_broadcaster</span>.<span class="ruby-identifier">start</span>
-124:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 108</span>
+108:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start</span>
+109:       <span class="ruby-ivar">@peer_registry</span>.<span class="ruby-identifier">start</span>
+110:       
+111:       <span class="ruby-comment cmt"># Start a peer listener first so we don't risk missing a connection attempt.</span>
+112:       <span class="ruby-identifier">putsd</span> <span class="ruby-node">&quot;Starting #{@peer_listener.class.to_s}&quot;</span>
+113:       <span class="ruby-ivar">@peer_listener</span>.<span class="ruby-identifier">start</span>
+114:       
+115:       <span class="ruby-comment cmt"># Start listening for peer presence announcements next.</span>
+116:       <span class="ruby-identifier">putsd</span> <span class="ruby-node">&quot;Starting #{@presence_listener.class.to_s}&quot;</span>
+117:       <span class="ruby-ivar">@presence_listener</span>.<span class="ruby-identifier">start</span>
+118:       
+119:       <span class="ruby-comment cmt"># Now that we're all set up, start sending our own presence events</span>
+120:       <span class="ruby-comment cmt"># so peer can start sending us data!</span>
+121:       <span class="ruby-identifier">putsd</span> <span class="ruby-node">&quot;Starting #{@presence_broadcaster.class.to_s}&quot;</span>
+122:       <span class="ruby-ivar">@presence_broadcaster</span>.<span class="ruby-identifier">start</span>
+123:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -865,21 +865,21 @@ to be started.
 					<div class="method-source-code"
 						id="stop-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 127</span>
-127:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stop</span>
-128:       <span class="ruby-comment cmt"># Stop broadcasting presence.</span>
-129:       <span class="ruby-ivar">@presence_broadcaster</span>.<span class="ruby-identifier">stop</span>
-130:       <span class="ruby-comment cmt"># Stop listening for presence events, which prevents new peer registrations</span>
-131:       <span class="ruby-ivar">@presence_listener</span>.<span class="ruby-identifier">stop</span>
-132:       <span class="ruby-comment cmt"># Stop listening for incoming peer data.</span>
-133:       <span class="ruby-ivar">@peer_listener</span>.<span class="ruby-identifier">stop</span>
-134:       
-135:       <span class="ruby-comment cmt"># While the registry does not have its own thread, it is in charge of managing</span>
-136:       <span class="ruby-comment cmt"># +PeerConnection+s which DO have individual threads. This call</span>
-137:       <span class="ruby-comment cmt"># forcefully terminates all connections, which may or may not be actively passing data.</span>
-138: <span class="ruby-comment cmt">#      @peer_registry.unregister_all</span>
-139:       <span class="ruby-ivar">@peer_registry</span>.<span class="ruby-identifier">stop</span>
-140:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 126</span>
+126:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stop</span>
+127:       <span class="ruby-comment cmt"># Stop broadcasting presence.</span>
+128:       <span class="ruby-ivar">@presence_broadcaster</span>.<span class="ruby-identifier">stop</span>
+129:       <span class="ruby-comment cmt"># Stop listening for presence events, which prevents new peer registrations</span>
+130:       <span class="ruby-ivar">@presence_listener</span>.<span class="ruby-identifier">stop</span>
+131:       <span class="ruby-comment cmt"># Stop listening for incoming peer data.</span>
+132:       <span class="ruby-ivar">@peer_listener</span>.<span class="ruby-identifier">stop</span>
+133:       
+134:       <span class="ruby-comment cmt"># While the registry does not have its own thread, it is in charge of managing</span>
+135:       <span class="ruby-comment cmt"># +PeerConnection+s which DO have individual threads. This call</span>
+136:       <span class="ruby-comment cmt"># forcefully terminates all connections, which may or may not be actively passing data.</span>
+137: <span class="ruby-comment cmt">#      @peer_registry.unregister_all</span>
+138:       <span class="ruby-ivar">@peer_registry</span>.<span class="ruby-identifier">stop</span>
+139:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -916,10 +916,10 @@ online.
 					<div class="method-source-code"
 						id="unregister-peer-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 190</span>
-190:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister_peer</span>(<span class="ruby-identifier">peer</span>)
-191:       <span class="ruby-identifier">peer_registry</span>.<span class="ruby-identifier">unregister</span>(<span class="ruby-identifier">peer</span>)
-192:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 189</span>
+189:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister_peer</span>(<span class="ruby-identifier">peer</span>)
+190:       <span class="ruby-identifier">peer_registry</span>.<span class="ruby-identifier">unregister</span>(<span class="ruby-identifier">peer</span>)
+191:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

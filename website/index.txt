@@ -28,4 +28,4 @@ h2. The Basics
 
 Several annotated code snippets can be found in the "examples" directory of the gem. Open two consoles, and run this script (it comes with the gem) on each. You should see messages on each console showing received presence events. Hit <enter> in one consoles to shut down the peer, and look for an event message in the other. Sweeeeet.
 
-Email "Preston Lee":mailto:preston.lee@openrain.com and read the blog.
+Email "Preston Lee":mailto:preston.lee@prestonlee.com and read the blog.

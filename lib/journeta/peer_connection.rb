@@ -1,6 +1,6 @@
 # Copyright © 2011 Preston Lee Ventures, LLC. All rights reserved.
 #
-# Preston Lee <preston.lee@openrain.com>
+# Preston Lee <preston.lee@prestonlee.com>
 module Journeta
   
   # An outgoing message tube. Messages may or may not arrive at the destination, but if they do they'll be in order.
