@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>File: README.txt [journeta rdoc]</title>
+
+	<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+</head>
+
+<body class="file">
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./README_txt.html">README.txt</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./Journeta/Asynchronous.html">Journeta::Asynchronous</a></li>
+				
+					<li><a href="./Journeta/Common.html">Journeta::Common</a></li>
+				
+					<li><a href="./Journeta/Common/BasicMessage.html">Journeta::Common::BasicMessage</a></li>
+				
+					<li><a href="./Journeta/Common/DummyPeerHandler.html">Journeta::Common::DummyPeerHandler</a></li>
+				
+					<li><a href="./Journeta/Common/Job.html">Journeta::Common::Job</a></li>
+				
+					<li><a href="./Journeta/Common/Shutdown.html">Journeta::Common::Shutdown</a></li>
+				
+					<li><a href="./Journeta/DefaultPeerHandler.html">Journeta::DefaultPeerHandler</a></li>
+				
+					<li><a href="./Journeta/DefaultPeerRegisteredHandler.html">Journeta::DefaultPeerRegisteredHandler</a></li>
+				
+					<li><a href="./Journeta/DefaultPeerUnregisteredHandler.html">Journeta::DefaultPeerUnregisteredHandler</a></li>
+				
+					<li><a href="./Journeta/DefaultPeerUpdatedHandler.html">Journeta::DefaultPeerUpdatedHandler</a></li>
+				
+					<li><a href="./Journeta/Engine.html">Journeta::Engine</a></li>
+				
+					<li><a href="./Journeta/Logger.html">Journeta::Logger</a></li>
+				
+					<li><a href="./Journeta/NotImplementedException.html">Journeta::NotImplementedException</a></li>
+				
+					<li><a href="./Journeta/PeerConnection.html">Journeta::PeerConnection</a></li>
+				
+					<li><a href="./Journeta/PeerListener.html">Journeta::PeerListener</a></li>
+				
+					<li><a href="./Journeta/PeerRegistry.html">Journeta::PeerRegistry</a></li>
+				
+					<li><a href="./Journeta/PresenceBroadcaster.html">Journeta::PresenceBroadcaster</a></li>
+				
+					<li><a href="./Journeta/PresenceListener.html">Journeta::PresenceListener</a></li>
+				
+					<li><a href="./Journeta/PresenceMessage.html">Journeta::PresenceMessage</a></li>
+				
+					<li><a href="./Array.html">Array</a></li>
+				
+					<li><a href="./Diff.html">Diff</a></li>
+				
+					<li><a href="./Diffable.html">Diffable</a></li>
+				
+					<li><a href="./String.html">String</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1>Journeta</h1>
+<h2>About</h2>
+<p>
+Journeta is a dirt simple peer discovery and message passing library for
+processes on the same LAN, requiring no advanced networking knowledge to
+use.
+</p>
+<p>
+Only core Ruby libraries are required, making the library fairly light. As
+all data is sent across the wire in YAML form, any arbitrary Ruby object
+can be sent to peers, provided they..
+</p>
+<pre>
+ * Are running a compatible Journeta version.
+ * Have access to the same class definitions if you are sending your own custom objects.
+ * Do not have a firewall preventing network I/O.
+</pre>
+<p>
+Journeta uses Ruby threading to manage the asynchronous nature of
+peer-to-peer I/O. Data you send from your application thread will be queued
+and sent asynrchonously as soon as possible.  For insight into events
+internal to the library, start ruby with the `&#8212;debug` options.
+</p>
+<h2>Use</h2>
+<pre>
+ examples/instant_messenger.rb
+ 
+    A completely distributed, zero-configuration-required chat room script.
+    Fire up several instances in separate terminals. Multiple instances on the same machine is ok.
+    Everything you type will automatically be sent to all other instances on the LAN!
+    Use `ruby --debug examples/instant_messenger.rb` for detailed internal event details.
+
+ examples/instant_messenger_gui.rb
+
+        A GUI version of the above client. Require the wxruby gem. (`sudo gem install wxruby`)
+
+ examples/queue_server.rb
+ examples/queue_client.rb
+
+        A simple queue managed by a server. Each client produces jobs to be queued, and processes jobs
+        sent from the server(s). All nodes automatically find eachother. Try running multiples clients,
+        and then multiple servers. Notice that when you have N servers, each job gets run N times,
+        and not necessarilly by the same client!
+
+ examples/network_status.rb
+
+        Monitors the presence of all peers on the network.
+
+                
+</pre>
+<h2>Author</h2>
+<p>
+Preston Lee <preston.lee at openrain d0t com> <a
+href="http://www.prestonlee.com">www.prestonlee.com</a> <a
+href="http://www.openrain.com">www.openrain.com</a>
+</p>
+<h2>Links</h2>
+<p>
+How Journeta discovers peers using UDP multicasting.. <a
+href="http://onestepback.org/index.cgi/Tech/Ruby/MulticastingInRuby.red">onestepback.org/index.cgi/Tech/Ruby/MulticastingInRuby.red</a>
+</p>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+</body>
+</html>
+

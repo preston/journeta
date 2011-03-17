@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Diff</title>
+
+	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="./lib/diff_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/diff.rb">lib/diff.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-lcs">::lcs</a></li>
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-i-compact">#compact</a></li>
+					
+					<li><a href="#method-i-compact%21">#compact!</a></li>
+					
+					<li><a href="#method-i-compactdiffs">#compactdiffs</a></li>
+					
+					<li><a href="#method-i-discarda">#discarda</a></li>
+					
+					<li><a href="#method-i-discardb">#discardb</a></li>
+					
+					<li><a href="#method-i-inspect">#inspect</a></li>
+					
+					<li><a href="#method-i-makediff">#makediff</a></li>
+					
+					<li><a href="#method-i-match">#match</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./README_txt.html">README.txt</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./Journeta/Asynchronous.html">Journeta::Asynchronous</a></li>
+				
+					<li><a href="./Journeta/Common.html">Journeta::Common</a></li>
+				
+					<li><a href="./Journeta/Common/BasicMessage.html">Journeta::Common::BasicMessage</a></li>
+				
+					<li><a href="./Journeta/Common/DummyPeerHandler.html">Journeta::Common::DummyPeerHandler</a></li>
+				
+					<li><a href="./Journeta/Common/Job.html">Journeta::Common::Job</a></li>
+				
+					<li><a href="./Journeta/Common/Shutdown.html">Journeta::Common::Shutdown</a></li>
+				
+					<li><a href="./Journeta/DefaultPeerHandler.html">Journeta::DefaultPeerHandler</a></li>
+				
+					<li><a href="./Journeta/DefaultPeerRegisteredHandler.html">Journeta::DefaultPeerRegisteredHandler</a></li>
+				
+					<li><a href="./Journeta/DefaultPeerUnregisteredHandler.html">Journeta::DefaultPeerUnregisteredHandler</a></li>
+				
+					<li><a href="./Journeta/DefaultPeerUpdatedHandler.html">Journeta::DefaultPeerUpdatedHandler</a></li>
+				
+					<li><a href="./Journeta/Engine.html">Journeta::Engine</a></li>
+				
+					<li><a href="./Journeta/Logger.html">Journeta::Logger</a></li>
+				
+					<li><a href="./Journeta/NotImplementedException.html">Journeta::NotImplementedException</a></li>
+				
+					<li><a href="./Journeta/PeerConnection.html">Journeta::PeerConnection</a></li>
+				
+					<li><a href="./Journeta/PeerListener.html">Journeta::PeerListener</a></li>
+				
+					<li><a href="./Journeta/PeerRegistry.html">Journeta::PeerRegistry</a></li>
+				
+					<li><a href="./Journeta/PresenceBroadcaster.html">Journeta::PresenceBroadcaster</a></li>
+				
+					<li><a href="./Journeta/PresenceListener.html">Journeta::PresenceListener</a></li>
+				
+					<li><a href="./Journeta/PresenceMessage.html">Journeta::PresenceMessage</a></li>
+				
+					<li><a href="./Array.html">Array</a></li>
+				
+					<li><a href="./Diff.html">Diff</a></li>
+				
+					<li><a href="./Diffable.html">Diffable</a></li>
+				
+					<li><a href="./String.html">String</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Diff</h1>
+
+		<div id="description">
+			
+		</div>
+
+		<!-- Constants -->
+		
+		<div id="constants-list" class="section">
+			<h3 class="section-header">Constants</h3>
+			<dl>
+			
+				<dt><a name="VERSION">VERSION</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+			</dl>
+		</div>
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="diffs-attribute-method" class="method-detail">
+				<a name="diffs"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">diffs</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="difftype-attribute-method" class="method-detail">
+				<a name="difftype"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">difftype</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="lcs-method" class="method-detail ">
+				<a name="method-c-lcs"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">lcs</span><span
+						class="method-args">(a, b)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="lcs-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/diff.rb, line 5</span>
+ 5:   <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Diff</span>.<span class="ruby-identifier">lcs</span>(<span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span>)
+ 6:     <span class="ruby-identifier">astart</span> = <span class="ruby-value">0</span>
+ 7:     <span class="ruby-identifier">bstart</span> = <span class="ruby-value">0</span>
+ 8:     <span class="ruby-identifier">afinish</span> = <span class="ruby-identifier">a</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>
+ 9:     <span class="ruby-identifier">bfinish</span> = <span class="ruby-identifier">b</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>
+10:     <span class="ruby-identifier">mvector</span> = []
+11:     
+12:     <span class="ruby-comment cmt"># First we prune off any common elements at the beginning</span>
+13:     <span class="ruby-keyword kw">while</span> (<span class="ruby-identifier">astart</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">afinish</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">bstart</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">afinish</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">a</span>[<span class="ruby-identifier">astart</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">b</span>[<span class="ruby-identifier">bstart</span>])
+14:       <span class="ruby-identifier">mvector</span>[<span class="ruby-identifier">astart</span>] = <span class="ruby-identifier">bstart</span>
+15:       <span class="ruby-identifier">astart</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+16:       <span class="ruby-identifier">bstart</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+17:     <span class="ruby-keyword kw">end</span>
+18:     
+19:     <span class="ruby-comment cmt"># now the end</span>
+20:     <span class="ruby-keyword kw">while</span> (<span class="ruby-identifier">astart</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">afinish</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">bstart</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">bfinish</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">a</span>[<span class="ruby-identifier">afinish</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">b</span>[<span class="ruby-identifier">bfinish</span>])
+21:       <span class="ruby-identifier">mvector</span>[<span class="ruby-identifier">afinish</span>] = <span class="ruby-identifier">bfinish</span>
+22:       <span class="ruby-identifier">afinish</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+23:       <span class="ruby-identifier">bfinish</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+24:     <span class="ruby-keyword kw">end</span>
+25: 
+26:     <span class="ruby-identifier">bmatches</span> = <span class="ruby-identifier">b</span>.<span class="ruby-identifier">reverse_hash</span>(<span class="ruby-identifier">bstart</span><span class="ruby-operator">..</span><span class="ruby-identifier">bfinish</span>)
+27:     <span class="ruby-identifier">thresh</span> = []
+28:     <span class="ruby-identifier">links</span> = []
+29:     
+30:     (<span class="ruby-identifier">astart</span><span class="ruby-operator">..</span><span class="ruby-identifier">afinish</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">aindex</span><span class="ruby-operator">|</span>
+31:       <span class="ruby-identifier">aelem</span> = <span class="ruby-identifier">a</span>[<span class="ruby-identifier">aindex</span>]
+32:       <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">bmatches</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">aelem</span>
+33:       <span class="ruby-identifier">k</span> = <span class="ruby-keyword kw">nil</span>
+34:       <span class="ruby-identifier">bmatches</span>[<span class="ruby-identifier">aelem</span>].<span class="ruby-identifier">reverse</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">bindex</span><span class="ruby-operator">|</span>
+35:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">k</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">thresh</span>[<span class="ruby-identifier">k</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">bindex</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">thresh</span>[<span class="ruby-identifier">k</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>] <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">bindex</span>)
+36:           <span class="ruby-identifier">thresh</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">bindex</span>
+37:         <span class="ruby-keyword kw">else</span>
+38:           <span class="ruby-identifier">k</span> = <span class="ruby-identifier">thresh</span>.<span class="ruby-identifier">replacenextlarger</span>(<span class="ruby-identifier">bindex</span>, <span class="ruby-identifier">k</span>)
+39:         <span class="ruby-keyword kw">end</span>
+40:         <span class="ruby-identifier">links</span>[<span class="ruby-identifier">k</span>] = [ (<span class="ruby-identifier">k</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">links</span>[<span class="ruby-identifier">k</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>], <span class="ruby-identifier">aindex</span>, <span class="ruby-identifier">bindex</span> ] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">k</span>
+41:       }
+42:     }
+43: 
+44:     <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">thresh</span>.<span class="ruby-identifier">empty?</span>
+45:       <span class="ruby-identifier">link</span> = <span class="ruby-identifier">links</span>[<span class="ruby-identifier">thresh</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]
+46:       <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">link</span>
+47:         <span class="ruby-identifier">mvector</span>[<span class="ruby-identifier">link</span>[<span class="ruby-value">1</span>]] = <span class="ruby-identifier">link</span>[<span class="ruby-value">2</span>]
+48:         <span class="ruby-identifier">link</span> = <span class="ruby-identifier">link</span>[<span class="ruby-value">0</span>]
+49:       <span class="ruby-keyword kw">end</span>
+50:     <span class="ruby-keyword kw">end</span>
+51: 
+52:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">mvector</span>
+53:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(diffs_or_a, b = nil, isstring = nil)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/diff.rb, line 109</span>
+109:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">diffs_or_a</span>, <span class="ruby-identifier">b</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">isstring</span> = <span class="ruby-keyword kw">nil</span>)
+110:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">nil?</span>
+111:       <span class="ruby-ivar">@diffs</span> = <span class="ruby-identifier">diffs_or_a</span>
+112:       <span class="ruby-ivar">@isstring</span> = <span class="ruby-identifier">isstring</span>
+113:     <span class="ruby-keyword kw">else</span>
+114:       <span class="ruby-ivar">@diffs</span> = []
+115:       <span class="ruby-ivar">@curdiffs</span> = []
+116:       <span class="ruby-identifier">makediff</span>(<span class="ruby-identifier">diffs_or_a</span>, <span class="ruby-identifier">b</span>)
+117:       <span class="ruby-ivar">@difftype</span> = <span class="ruby-identifier">diffs_or_a</span>.<span class="ruby-identifier">type</span>
+118:     <span class="ruby-keyword kw">end</span>
+119:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="compact-method" class="method-detail ">
+				<a name="method-i-compact"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">compact</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="compact-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/diff.rb, line 134</span>
+134:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compact</span>
+135:     <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Diff</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">compactdiffs</span>)
+136:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="compact--method" class="method-detail ">
+				<a name="method-i-compact%21"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">compact!</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="compact--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/diff.rb, line 138</span>
+138:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compact!</span>
+139:     <span class="ruby-ivar">@diffs</span> = <span class="ruby-identifier">compactdiffs</span>
+140:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="compactdiffs-method" class="method-detail ">
+				<a name="method-i-compactdiffs"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">compactdiffs</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="compactdiffs-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/diff.rb, line 84</span>
+ 84:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compactdiffs</span>
+ 85:     <span class="ruby-identifier">diffs</span> = []
+ 86:     <span class="ruby-ivar">@diffs</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">df</span><span class="ruby-operator">|</span>
+ 87:       <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
+ 88:       <span class="ruby-identifier">curdiff</span> = []
+ 89:       <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">df</span>.<span class="ruby-identifier">length</span>
+ 90:         <span class="ruby-identifier">whot</span> = <span class="ruby-identifier">df</span>[<span class="ruby-identifier">i</span>][<span class="ruby-value">0</span>]
+ 91:         <span class="ruby-identifier">s</span> = <span class="ruby-ivar">@isstring</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">df</span>[<span class="ruby-identifier">i</span>][<span class="ruby-value">2</span>].<span class="ruby-identifier">chr</span> <span class="ruby-operator">:</span> [<span class="ruby-identifier">df</span>[<span class="ruby-identifier">i</span>][<span class="ruby-value">2</span>]]
+ 92:         <span class="ruby-identifier">p</span> = <span class="ruby-identifier">df</span>[<span class="ruby-identifier">i</span>][<span class="ruby-value">1</span>]
+ 93:         <span class="ruby-identifier">last</span> = <span class="ruby-identifier">df</span>[<span class="ruby-identifier">i</span>][<span class="ruby-value">1</span>]
+ 94:         <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+ 95:         <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">df</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">df</span>[<span class="ruby-identifier">i</span>][<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">whot</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">df</span>[<span class="ruby-identifier">i</span>][<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">last</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>
+ 96:           <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">df</span>[<span class="ruby-identifier">i</span>][<span class="ruby-value">2</span>]
+ 97:           <span class="ruby-identifier">last</span>  = <span class="ruby-identifier">df</span>[<span class="ruby-identifier">i</span>][<span class="ruby-value">1</span>]
+ 98:           <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+ 99:         <span class="ruby-keyword kw">end</span>
+100:         <span class="ruby-identifier">curdiff</span>.<span class="ruby-identifier">push</span> [<span class="ruby-identifier">whot</span>, <span class="ruby-identifier">p</span>, <span class="ruby-identifier">s</span>]
+101:       <span class="ruby-keyword kw">end</span>
+102:       <span class="ruby-identifier">diffs</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">curdiff</span>
+103:     }
+104:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">diffs</span>
+105:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="discarda-method" class="method-detail ">
+				<a name="method-i-discarda"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">discarda</span><span
+						class="method-args">(i, elem)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="discarda-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/diff.rb, line 126</span>
+126:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">discarda</span>(<span class="ruby-identifier">i</span>, <span class="ruby-identifier">elem</span>)
+127:     <span class="ruby-ivar">@curdiffs</span>.<span class="ruby-identifier">push</span> [<span class="ruby-value str">'-'</span>, <span class="ruby-identifier">i</span>, <span class="ruby-identifier">elem</span>]
+128:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="discardb-method" class="method-detail ">
+				<a name="method-i-discardb"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">discardb</span><span
+						class="method-args">(i, elem)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="discardb-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/diff.rb, line 130</span>
+130:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">discardb</span>(<span class="ruby-identifier">i</span>, <span class="ruby-identifier">elem</span>)
+131:     <span class="ruby-ivar">@curdiffs</span>.<span class="ruby-identifier">push</span> [<span class="ruby-value str">'+'</span>, <span class="ruby-identifier">i</span>, <span class="ruby-identifier">elem</span>]
+132:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="inspect-method" class="method-detail ">
+				<a name="method-i-inspect"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">inspect</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="inspect-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/diff.rb, line 142</span>
+142:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+143:     <span class="ruby-ivar">@diffs</span>.<span class="ruby-identifier">inspect</span>
+144:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="makediff-method" class="method-detail ">
+				<a name="method-i-makediff"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">makediff</span><span
+						class="method-args">(a, b)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="makediff-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/diff.rb, line 55</span>
+55:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">makediff</span>(<span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span>)
+56:     <span class="ruby-identifier">mvector</span> = <span class="ruby-constant">Diff</span>.<span class="ruby-identifier">lcs</span>(<span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span>)
+57:     <span class="ruby-identifier">ai</span> = <span class="ruby-identifier">bi</span> = <span class="ruby-value">0</span>
+58:     <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">ai</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">mvector</span>.<span class="ruby-identifier">length</span>
+59:       <span class="ruby-identifier">bline</span> = <span class="ruby-identifier">mvector</span>[<span class="ruby-identifier">ai</span>]
+60:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">bline</span>
+61:         <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">bi</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">bline</span>
+62:           <span class="ruby-identifier">discardb</span>(<span class="ruby-identifier">bi</span>, <span class="ruby-identifier">b</span>[<span class="ruby-identifier">bi</span>])
+63:           <span class="ruby-identifier">bi</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+64:         <span class="ruby-keyword kw">end</span>
+65:         <span class="ruby-identifier">match</span>(<span class="ruby-identifier">ai</span>, <span class="ruby-identifier">bi</span>)
+66:         <span class="ruby-identifier">bi</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+67:       <span class="ruby-keyword kw">else</span>
+68:         <span class="ruby-identifier">discarda</span>(<span class="ruby-identifier">ai</span>, <span class="ruby-identifier">a</span>[<span class="ruby-identifier">ai</span>])
+69:       <span class="ruby-keyword kw">end</span>
+70:       <span class="ruby-identifier">ai</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+71:     <span class="ruby-keyword kw">end</span>
+72:     <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">ai</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">length</span>
+73:       <span class="ruby-identifier">discarda</span>(<span class="ruby-identifier">ai</span>, <span class="ruby-identifier">a</span>[<span class="ruby-identifier">ai</span>])
+74:       <span class="ruby-identifier">ai</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+75:     <span class="ruby-keyword kw">end</span>
+76:     <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">bi</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">length</span>
+77:       <span class="ruby-identifier">discardb</span>(<span class="ruby-identifier">bi</span>, <span class="ruby-identifier">b</span>[<span class="ruby-identifier">bi</span>])
+78:       <span class="ruby-identifier">bi</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+79:     <span class="ruby-keyword kw">end</span>
+80:     <span class="ruby-identifier">match</span>(<span class="ruby-identifier">ai</span>, <span class="ruby-identifier">bi</span>)
+81:     <span class="ruby-value">1</span>
+82:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="match-method" class="method-detail ">
+				<a name="method-i-match"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">match</span><span
+						class="method-args">(ai, bi)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="match-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/diff.rb, line 121</span>
+121:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match</span>(<span class="ruby-identifier">ai</span>, <span class="ruby-identifier">bi</span>)
+122:     <span class="ruby-ivar">@diffs</span>.<span class="ruby-identifier">push</span> <span class="ruby-ivar">@curdiffs</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@curdiffs</span>.<span class="ruby-identifier">empty?</span>
+123:     <span class="ruby-ivar">@curdiffs</span> = []
+124:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

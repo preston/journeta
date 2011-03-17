@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Journeta::PeerConnection</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/journeta/peer_connection_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/journeta/peer_connection.rb">lib/journeta/peer_connection.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link"><a href="Asynchronous.html">Journeta::Asynchronous</a></p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-i-go">#go</a></li>
+					
+					<li><a href="#method-i-send_payload">#send_payload</a></li>
+					
+					<li><a href="#method-i-update_settings">#update_settings</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+			<div id="includes-section" class="section">
+				<h3 class="section-header">Included Modules</h3>
+				<ul class="link-list">
+				
+				
+					<li><span class="include">Logger</span></li>
+				
+				
+				</ul>
+			</div>
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README_txt.html">README.txt</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../Journeta/Asynchronous.html">Journeta::Asynchronous</a></li>
+				
+					<li><a href="../Journeta/Common.html">Journeta::Common</a></li>
+				
+					<li><a href="../Journeta/Common/BasicMessage.html">Journeta::Common::BasicMessage</a></li>
+				
+					<li><a href="../Journeta/Common/DummyPeerHandler.html">Journeta::Common::DummyPeerHandler</a></li>
+				
+					<li><a href="../Journeta/Common/Job.html">Journeta::Common::Job</a></li>
+				
+					<li><a href="../Journeta/Common/Shutdown.html">Journeta::Common::Shutdown</a></li>
+				
+					<li><a href="../Journeta/DefaultPeerHandler.html">Journeta::DefaultPeerHandler</a></li>
+				
+					<li><a href="../Journeta/DefaultPeerRegisteredHandler.html">Journeta::DefaultPeerRegisteredHandler</a></li>
+				
+					<li><a href="../Journeta/DefaultPeerUnregisteredHandler.html">Journeta::DefaultPeerUnregisteredHandler</a></li>
+				
+					<li><a href="../Journeta/DefaultPeerUpdatedHandler.html">Journeta::DefaultPeerUpdatedHandler</a></li>
+				
+					<li><a href="../Journeta/Engine.html">Journeta::Engine</a></li>
+				
+					<li><a href="../Journeta/Logger.html">Journeta::Logger</a></li>
+				
+					<li><a href="../Journeta/NotImplementedException.html">Journeta::NotImplementedException</a></li>
+				
+					<li><a href="../Journeta/PeerConnection.html">Journeta::PeerConnection</a></li>
+				
+					<li><a href="../Journeta/PeerListener.html">Journeta::PeerListener</a></li>
+				
+					<li><a href="../Journeta/PeerRegistry.html">Journeta::PeerRegistry</a></li>
+				
+					<li><a href="../Journeta/PresenceBroadcaster.html">Journeta::PresenceBroadcaster</a></li>
+				
+					<li><a href="../Journeta/PresenceListener.html">Journeta::PresenceListener</a></li>
+				
+					<li><a href="../Journeta/PresenceMessage.html">Journeta::PresenceMessage</a></li>
+				
+					<li><a href="../Array.html">Array</a></li>
+				
+					<li><a href="../Diff.html">Diff</a></li>
+				
+					<li><a href="../Diffable.html">Diffable</a></li>
+				
+					<li><a href="../String.html">String</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Journeta::PeerConnection</h1>
+
+		<div id="description">
+			<p>
+An outgoing message tube. Messages may or may not arrive at the
+destination, but if they do they&#8217;ll be in order.
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="uuid-attribute-method" class="method-detail">
+				<a name="uuid"></a>
+				
+				<a name="uuid="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">uuid</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+<a href="../String.html">String</a>
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="ip-address-attribute-method" class="method-detail">
+				<a name="ip_address"></a>
+				
+				<a name="ip_address="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">ip_address</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="version-attribute-method" class="method-detail">
+				<a name="version"></a>
+				
+				<a name="version="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">version</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="groups-attribute-method" class="method-detail">
+				<a name="groups"></a>
+				
+				<a name="groups="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">groups</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+An <a href="../Array.html">Array</a> of Strings.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="created-at-attribute-method" class="method-detail">
+				<a name="created_at"></a>
+				
+				<a name="created_at="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">created_at</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Time.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="updated-at-attribute-method" class="method-detail">
+				<a name="updated_at"></a>
+				
+				<a name="updated_at="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">updated_at</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="peer-port-attribute-method" class="method-detail">
+				<a name="peer_port"></a>
+				
+				<a name="peer_port="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">peer_port</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+integer.
+</p>
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(engine)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/journeta/peer_connection.rb, line 27</span>
+27:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">engine</span>)
+28:       <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">engine</span>)
+29:       <span class="ruby-ivar">@queue</span> = <span class="ruby-constant">Queue</span>.<span class="ruby-identifier">new</span>
+30:       <span class="ruby-ivar">@settings_lock</span> = <span class="ruby-constant">Mutex</span>.<span class="ruby-identifier">new</span>      
+31:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="go-method" class="method-detail ">
+				<a name="method-i-go"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">go</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Implementation of abstract parent declaration.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="go-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/journeta/peer_connection.rb, line 57</span>
+57:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">go</span>
+58:       <span class="ruby-keyword kw">begin</span>
+59:         <span class="ruby-keyword kw">while</span> <span class="ruby-keyword kw">true</span>
+60:           <span class="ruby-comment cmt"># TODO Reuse TCP connections between pops!</span>
+61:           <span class="ruby-identifier">payload</span> = <span class="ruby-ivar">@queue</span>.<span class="ruby-identifier">pop</span>
+62:           <span class="ruby-identifier">s</span> = <span class="ruby-keyword kw">nil</span>
+63:           <span class="ruby-ivar">@settings_lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span> <span class="ruby-comment cmt"># To prevent corruption of settings.</span>
+64:             <span class="ruby-identifier">s</span> = <span class="ruby-constant">TCPSocket</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">ip_address</span>, <span class="ruby-identifier">peer_port</span>)       
+65:           <span class="ruby-keyword kw">end</span>
+66:           <span class="ruby-identifier">data</span> = <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">dump</span>(<span class="ruby-identifier">payload</span>)
+67:           <span class="ruby-comment cmt">#        pp data</span>
+68:           <span class="ruby-identifier">s</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">data</span> , <span class="ruby-value">0</span>)
+69:           <span class="ruby-identifier">s</span>.<span class="ruby-identifier">close</span>
+70:         <span class="ruby-keyword kw">end</span>
+71:       <span class="ruby-keyword kw">rescue</span>
+72:         <span class="ruby-comment cmt"># Ok, so this is kindof wierd.</span>
+73:         <span class="ruby-comment cmt"># Unregistering ourselves in our own thread is a paradox becasue</span>
+74:         <span class="ruby-comment cmt"># we'd end up killing ourselves before the call completes and the unregistration process can finish.</span>
+75:         <span class="ruby-comment cmt"># The end effect being we could end up with a stopped peer connection which is still registered.</span>
+76:         <span class="ruby-comment cmt"># So to kill ourselves cleanly, we need to create *another* thread exclusively for the task.</span>
+77:         <span class="ruby-comment cmt"># If somehow we end up in this block again before our child thread kills us, we're ok to create another one</span>
+78:         <span class="ruby-comment cmt"># because the registry will just ignore a request to unregister an unknown connection, and it's internally</span>
+79:         <span class="ruby-comment cmt"># protected against registry corruption with an exclusive lock.</span>
+80:         <span class="ruby-comment cmt">#</span>
+81:         <span class="ruby-comment cmt"># Sorry that this is deceptively complicated. It's a design gotcha! :)</span>
+82:         <span class="ruby-identifier">putsd</span> <span class="ruby-node">&quot;Peer #{uuid} has gone away. Deregistering in the background.&quot;</span>
+83:         <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">me</span><span class="ruby-operator">|</span>
+84:           <span class="ruby-ivar">@engine</span>.<span class="ruby-identifier">unregister_peer</span>(<span class="ruby-identifier">me</span>)
+85:         <span class="ruby-keyword kw">end</span>
+86:       <span class="ruby-keyword kw">end</span>
+87:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="send-payload-method" class="method-detail ">
+				<a name="method-i-send_payload"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">send_payload</span><span
+						class="method-args">(payload)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Adds the given payload to the outbound message queue and immediately
+returns.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="send-payload-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/journeta/peer_connection.rb, line 34</span>
+34:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_payload</span>(<span class="ruby-identifier">payload</span>)
+35:       <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Don't try to send nil payloads!&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">payload</span>.<span class="ruby-identifier">nil?</span>
+36:       <span class="ruby-ivar">@queue</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">payload</span>
+37:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="update-settings-method" class="method-detail ">
+				<a name="method-i-update_settings"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">update_settings</span><span
+						class="method-args">(other)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Updates this instances settings by copying from a provided template. Peers
+can, in theory, change IP address, port, version and group settings without
+re-registering in this instance, which would drop all pending outbound data
+from this connection queue, and the creation and registration of a new
+connection record. Peer metadata of this instance will be updated from the
+same fields of the given instance, however, the internal queue of this
+instance and current thread I/O context will remain unchanged.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="update-settings-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/journeta/peer_connection.rb, line 46</span>
+46:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update_settings</span>(<span class="ruby-identifier">other</span>)
+47:       <span class="ruby-ivar">@settings_lock</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span>
+48:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">ip_address</span> = <span class="ruby-identifier">other</span>.<span class="ruby-identifier">ip_address</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">ip_address</span>
+49:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">peer_port</span> = <span class="ruby-identifier">other</span>.<span class="ruby-identifier">peer_port</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">peer_port</span>
+50:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">version</span> = <span class="ruby-identifier">other</span>.<span class="ruby-identifier">version</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">version</span>
+51:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">created_at</span> = <span class="ruby-identifier">other</span>.<span class="ruby-identifier">created_at</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">created_at</span>
+52:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">updated_at</span> = <span class="ruby-identifier">other</span>.<span class="ruby-identifier">updated_at</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">updated_at</span>
+53:       <span class="ruby-keyword kw">end</span>
+54:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

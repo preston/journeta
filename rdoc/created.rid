@@ -1,0 +1,20 @@
+Thu, 17 Mar 2011 16:32:40 -0700
+README.txt	Thu, 17 Mar 2011 13:55:37 -0700
+lib/diff.rb	Thu, 17 Mar 2011 16:02:25 -0700
+lib/journeta/asynchronous.rb	Thu, 17 Mar 2011 16:30:21 -0700
+lib/journeta/common/basic_message.rb	Sat, 04 Dec 2010 11:28:14 -0700
+lib/journeta/common/dummy_peer_handler.rb	Sat, 04 Dec 2010 11:28:14 -0700
+lib/journeta/common/job.rb	Sat, 04 Dec 2010 11:28:14 -0700
+lib/journeta/common/shutdown.rb	Sat, 04 Dec 2010 11:28:14 -0700
+lib/journeta/exception.rb	Thu, 17 Mar 2011 16:30:21 -0700
+lib/journeta/journeta_engine.rb	Thu, 17 Mar 2011 16:30:21 -0700
+lib/journeta/logger.rb	Thu, 17 Mar 2011 16:30:21 -0700
+lib/journeta/peer_connection.rb	Thu, 17 Mar 2011 16:30:21 -0700
+lib/journeta/peer_handler.rb	Sat, 04 Dec 2010 11:28:14 -0700
+lib/journeta/peer_listener.rb	Thu, 17 Mar 2011 16:30:21 -0700
+lib/journeta/peer_registry.rb	Sat, 04 Dec 2010 11:28:14 -0700
+lib/journeta/presence_broadcaster.rb	Sat, 04 Dec 2010 11:28:14 -0700
+lib/journeta/presence_listener.rb	Sat, 04 Dec 2010 11:28:14 -0700
+lib/journeta/presence_message.rb	Sat, 04 Dec 2010 11:28:14 -0700
+lib/journeta/version.rb	Thu, 17 Mar 2011 15:39:38 -0700
+lib/journeta.rb	Thu, 17 Mar 2011 16:29:43 -0700

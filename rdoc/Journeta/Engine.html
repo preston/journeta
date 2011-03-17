@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Journeta::Engine</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/journeta/journeta_engine_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/journeta/journeta_engine.rb">lib/journeta/journeta_engine.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-i-known_groups">#known_groups</a></li>
+					
+					<li><a href="#method-i-known_peers">#known_peers</a></li>
+					
+					<li><a href="#method-i-known_peers_in_group">#known_peers_in_group</a></li>
+					
+					<li><a href="#method-i-register_peer">#register_peer</a></li>
+					
+					<li><a href="#method-i-send_to_known_peers">#send_to_known_peers</a></li>
+					
+					<li><a href="#method-i-send_to_peer">#send_to_peer</a></li>
+					
+					<li><a href="#method-i-start">#start</a></li>
+					
+					<li><a href="#method-i-stop">#stop</a></li>
+					
+					<li><a href="#method-i-unregister_peer">#unregister_peer</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+			<div id="includes-section" class="section">
+				<h3 class="section-header">Included Modules</h3>
+				<ul class="link-list">
+				
+				
+					<li><span class="include">Logger</span></li>
+				
+				
+				</ul>
+			</div>
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README_txt.html">README.txt</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../Journeta/Asynchronous.html">Journeta::Asynchronous</a></li>
+				
+					<li><a href="../Journeta/Common.html">Journeta::Common</a></li>
+				
+					<li><a href="../Journeta/Common/BasicMessage.html">Journeta::Common::BasicMessage</a></li>
+				
+					<li><a href="../Journeta/Common/DummyPeerHandler.html">Journeta::Common::DummyPeerHandler</a></li>
+				
+					<li><a href="../Journeta/Common/Job.html">Journeta::Common::Job</a></li>
+				
+					<li><a href="../Journeta/Common/Shutdown.html">Journeta::Common::Shutdown</a></li>
+				
+					<li><a href="../Journeta/DefaultPeerHandler.html">Journeta::DefaultPeerHandler</a></li>
+				
+					<li><a href="../Journeta/DefaultPeerRegisteredHandler.html">Journeta::DefaultPeerRegisteredHandler</a></li>
+				
+					<li><a href="../Journeta/DefaultPeerUnregisteredHandler.html">Journeta::DefaultPeerUnregisteredHandler</a></li>
+				
+					<li><a href="../Journeta/DefaultPeerUpdatedHandler.html">Journeta::DefaultPeerUpdatedHandler</a></li>
+				
+					<li><a href="../Journeta/Engine.html">Journeta::Engine</a></li>
+				
+					<li><a href="../Journeta/Logger.html">Journeta::Logger</a></li>
+				
+					<li><a href="../Journeta/NotImplementedException.html">Journeta::NotImplementedException</a></li>
+				
+					<li><a href="../Journeta/PeerConnection.html">Journeta::PeerConnection</a></li>
+				
+					<li><a href="../Journeta/PeerListener.html">Journeta::PeerListener</a></li>
+				
+					<li><a href="../Journeta/PeerRegistry.html">Journeta::PeerRegistry</a></li>
+				
+					<li><a href="../Journeta/PresenceBroadcaster.html">Journeta::PresenceBroadcaster</a></li>
+				
+					<li><a href="../Journeta/PresenceListener.html">Journeta::PresenceListener</a></li>
+				
+					<li><a href="../Journeta/PresenceMessage.html">Journeta::PresenceMessage</a></li>
+				
+					<li><a href="../Array.html">Array</a></li>
+				
+					<li><a href="../Diff.html">Diff</a></li>
+				
+					<li><a href="../Diffable.html">Diffable</a></li>
+				
+					<li><a href="../String.html">String</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Journeta::Engine</h1>
+
+		<div id="description">
+			<p>
+The primary fascade of the entire <tt>Journeta</tt> library, which
+composite a number of objects running asynchronously to the primary
+application <tt>Thread</tt>. Use of this fascade requires a minimal amount
+of lifecycle management on your part to start and stop the engine at
+appropriate times. (Usually only at application startup and shutdown,
+respectively.)
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+		<div id="constants-list" class="section">
+			<h3 class="section-header">Constants</h3>
+			<dl>
+			
+				<dt><a name="DEFAULT_PEER_PORT">DEFAULT_PEER_PORT</a></dt>
+				
+				<dd class="description"><p>
+Incoming direct peer TCP connections will use this port.
+</p></dd>
+				
+			
+				<dt><a name="DEFAULT_PRESENCE_PORT">DEFAULT_PRESENCE_PORT</a></dt>
+				
+				<dd class="description"><p>
+On UDP port on which we send/receive peer presence messages.
+</p></dd>
+				
+			
+				<dt><a name="DEFAULT_PRESENCE_NETWORK">DEFAULT_PRESENCE_NETWORK</a></dt>
+				
+				<dd class="description"><p>
+Addresses 224.0.0.0 through 239.255.255.255 are reserved for multicast
+messages.
+</p></dd>
+				
+			
+				<dt><a name="DEFAULT_PRESENCE_PERIOD">DEFAULT_PRESENCE_PERIOD</a></dt>
+				
+				<dd class="description"><p>
+The wait time, in seconds, between rebroadcasts of peer presence.
+</p></dd>
+				
+			
+			</dl>
+		</div>
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="uuid-attribute-method" class="method-detail">
+				<a name="uuid"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">uuid</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+A supposedly universally unique id for this instance.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="groups-attribute-method" class="method-detail">
+				<a name="groups"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">groups</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+An array of peer network names. Ex: [&#8216;Preston Lee Ventures
+Test&#8217;, &#8216;quick_chat_app&#8217;] An empty array indicates
+implicit membership in all discovered groups.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="presence-broadcaster-attribute-method" class="method-detail">
+				<a name="presence_broadcaster"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">presence_broadcaster</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Continuously sends out &#8220;i&#8217;m here&#8221; presence messages to
+the local network
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="presence-listener-attribute-method" class="method-detail">
+				<a name="presence_listener"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">presence_listener</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+continuously listens for &#8220;i&#8217;m here&#8221; presence messages
+from other peers
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="presence-port-attribute-method" class="method-detail">
+				<a name="presence_port"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">presence_port</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The UDP port for event broadcast messages.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="presence-address-attribute-method" class="method-detail">
+				<a name="presence_address"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">presence_address</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The UDP network address used for broadcast messages.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="presence-period-attribute-method" class="method-detail">
+				<a name="presence_period"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">presence_period</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The amount of time between presence broadcasts.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="peer-listener-attribute-method" class="method-detail">
+				<a name="peer_listener"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">peer_listener</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Constantly listens for incoming peer sessions
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="peer-handler-attribute-method" class="method-detail">
+				<a name="peer_handler"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">peer_handler</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Application logic which processes session data.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="peer-registered-handler-attribute-method" class="method-detail">
+				<a name="peer_registered_handler"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">peer_registered_handler</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Application logic which gets notified when a peer comes online.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="peer-updated-handler-attribute-method" class="method-detail">
+				<a name="peer_updated_handler"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">peer_updated_handler</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Application logic which gets notified when a peer comes online.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="peer-unregistered-handler-attribute-method" class="method-detail">
+				<a name="peer_unregistered_handler"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">peer_unregistered_handler</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Application logic which gets notified when a peer goes offline.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="peer-port-attribute-method" class="method-detail">
+				<a name="peer_port"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">peer_port</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The TCP port used to receive direct peer messages.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="peer-registry-attribute-method" class="method-detail">
+				<a name="peer_registry"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">peer_registry</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Authoritative peer availability database.
+</p>
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(configuration ={})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Nothing magical. Just creation of internal components and configuration
+setup.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 83</span>
+ 83:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">configuration</span> ={})      
+ 84:       <span class="ruby-comment cmt"># TODO make guaranteed to be unique.</span>
+ 85:       <span class="ruby-ivar">@uuid</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:uuid</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">rand</span>(<span class="ruby-value">2</span> <span class="ruby-operator">**</span> <span class="ruby-value">31</span>)
+ 86:       <span class="ruby-ivar">@groups</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:groups</span>]
+ 87: 
+ 88:       
+ 89:       <span class="ruby-ivar">@peer_port</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_port</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PEER_PORT</span>
+ 90:       <span class="ruby-ivar">@peer_handler</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_handler</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DefaultPeerHandler</span>.<span class="ruby-identifier">new</span>
+ 91:       <span class="ruby-ivar">@peer_registered_handler</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_registered_handler</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DefaultPeerRegisteredHandler</span>.<span class="ruby-identifier">new</span>
+ 92:       <span class="ruby-ivar">@peer_updated_handler</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_updated_handler</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DefaultPeerUpdatedHandler</span>.<span class="ruby-identifier">new</span>
+ 93:       <span class="ruby-ivar">@peer_unregistered_handler</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_unregistered_handler</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DefaultPeerUnregisteredHandler</span>.<span class="ruby-identifier">new</span>
+ 94: 
+ 95:       <span class="ruby-ivar">@presence_port</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:presence_port</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PRESENCE_PORT</span>    
+ 96:       <span class="ruby-ivar">@presence_address</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:presence_address</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PRESENCE_NETWORK</span>      
+ 97:       <span class="ruby-ivar">@presence_period</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:presence_period</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PRESENCE_PERIOD</span>
+ 98:       
+ 99:       <span class="ruby-comment cmt"># Inversion of Control is used in the following components to allow for some semblance of testing.</span>
+100:       <span class="ruby-ivar">@peer_listener</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_listener</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Journeta</span><span class="ruby-operator">::</span><span class="ruby-constant">PeerListener</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+101:       <span class="ruby-ivar">@peer_registry</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:peer_registry</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">PeerRegistry</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+102:       <span class="ruby-ivar">@presence_listener</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:presence_listener</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">PresenceListener</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+103:       <span class="ruby-ivar">@presence_broadcaster</span> = <span class="ruby-identifier">configuration</span>[<span class="ruby-value">:presence_broadcaster</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">PresenceBroadcaster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+104:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="known-groups-method" class="method-detail ">
+				<a name="method-i-known_groups"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">known_groups</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="known-groups-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 171</span>
+171:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">known_groups</span>()
+172:       <span class="ruby-identifier">s</span> = <span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
+173:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">known_peers</span>(<span class="ruby-keyword kw">true</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">uuid</span>, <span class="ruby-identifier">peer</span><span class="ruby-operator">|</span>
+174:         <span class="ruby-identifier">s</span>.<span class="ruby-identifier">merge</span> <span class="ruby-identifier">peer</span>.<span class="ruby-identifier">groups</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">peer</span>.<span class="ruby-identifier">groups</span>.<span class="ruby-identifier">nil?</span>
+175:       <span class="ruby-keyword kw">end</span>
+176:       <span class="ruby-identifier">s</span>.<span class="ruby-identifier">to_a</span>
+177:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="known-peers-method" class="method-detail ">
+				<a name="method-i-known_peers"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">known_peers</span><span
+						class="method-args">(all_groups = false)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns metadata on all known peers in a hash, keyed by the uuid of each. A
+record corresponding to this peer is not included.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="known-peers-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 159</span>
+159:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">known_peers</span>(<span class="ruby-identifier">all_groups</span> = <span class="ruby-keyword kw">false</span>)
+160:       <span class="ruby-identifier">peer_registry</span>.<span class="ruby-identifier">all</span>(<span class="ruby-identifier">all_groups</span>)
+161:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="known-peers-in-group-method" class="method-detail ">
+				<a name="method-i-known_peers_in_group"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">known_peers_in_group</span><span
+						class="method-args">(group_name)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="known-peers-in-group-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 163</span>
+163:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">known_peers_in_group</span>(<span class="ruby-identifier">group_name</span>)
+164:       <span class="ruby-identifier">s</span> = {}
+165:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">known_peers</span>(<span class="ruby-keyword kw">true</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">uuid</span>, <span class="ruby-identifier">peer</span><span class="ruby-operator">|</span>
+166:         <span class="ruby-identifier">s</span>[<span class="ruby-identifier">uuid</span>] = <span class="ruby-identifier">peer</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">peer</span>.<span class="ruby-identifier">groups</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">group_name</span>)
+167:       <span class="ruby-keyword kw">end</span>
+168:       <span class="ruby-identifier">s</span>
+169:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="register-peer-method" class="method-detail ">
+				<a name="method-i-register_peer"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">register_peer</span><span
+						class="method-args">(peer)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Adds (or updates) the given <tt>PeerConnection</tt>. If a peer of the same
+UUID is found, the existing record will be updated and given instance
+#PeerConnection#stop&#8216;d. This prevents pending outbound data from
+being accidentally dropped.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="register-peer-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 182</span>
+182:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_peer</span>(<span class="ruby-identifier">peer</span>)
+183:       <span class="ruby-identifier">putsd</span> <span class="ruby-node">&quot;Registering peer: #{peer.uuid}&quot;</span>
+184:       <span class="ruby-identifier">peer_registry</span>.<span class="ruby-identifier">register</span>(<span class="ruby-identifier">peer</span>)
+185:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="send-to-known-peers-method" class="method-detail ">
+				<a name="method-i-send_to_known_peers"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">send_to_known_peers</span><span
+						class="method-args">(payload)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Sends the given object to all peers in one of the # associated with this
+instance. The object will be marshalled via YAML, so anything the YAML
+serializer misses won&#8217;t make it to the other side(s).  The return
+value is undefined.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="send-to-known-peers-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 145</span>
+145:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_to_known_peers</span>(<span class="ruby-identifier">payload</span>)
+146:       <span class="ruby-comment cmt"># Delegate directly.</span>
+147:       <span class="ruby-identifier">peer_registry</span>.<span class="ruby-identifier">send_to_known_peers</span>(<span class="ruby-identifier">payload</span>)
+148:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="send-to-peer-method" class="method-detail ">
+				<a name="method-i-send_to_peer"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">send_to_peer</span><span
+						class="method-args">(peer_uuid, payload)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Send the given object to the peer of the given UUID, if available. The
+return value is undefined.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="send-to-peer-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 152</span>
+152:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_to_peer</span>(<span class="ruby-identifier">peer_uuid</span>, <span class="ruby-identifier">payload</span>)
+153:       <span class="ruby-comment cmt"># Delegate directly.</span>
+154:       <span class="ruby-identifier">peer_registry</span>.<span class="ruby-identifier">send_to_peer</span>(<span class="ruby-identifier">peer_uuid</span>, <span class="ruby-identifier">payload</span>)
+155:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="start-method" class="method-detail ">
+				<a name="method-i-start"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">start</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Starts sub-comonents which have their own life-cycle requirements. The
+registry itself does not have a dedication thread, and thus does not need
+to be started.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="start-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 109</span>
+109:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start</span>
+110:       <span class="ruby-ivar">@peer_registry</span>.<span class="ruby-identifier">start</span>
+111:       
+112:       <span class="ruby-comment cmt"># Start a peer listener first so we don't risk missing a connection attempt.</span>
+113:       <span class="ruby-identifier">putsd</span> <span class="ruby-node">&quot;Starting #{@peer_listener.class.to_s}&quot;</span>
+114:       <span class="ruby-ivar">@peer_listener</span>.<span class="ruby-identifier">start</span>
+115:       
+116:       <span class="ruby-comment cmt"># Start listening for peer presence announcements next.</span>
+117:       <span class="ruby-identifier">putsd</span> <span class="ruby-node">&quot;Starting #{@presence_listener.class.to_s}&quot;</span>
+118:       <span class="ruby-ivar">@presence_listener</span>.<span class="ruby-identifier">start</span>
+119:       
+120:       <span class="ruby-comment cmt"># Now that we're all set up, start sending our own presence events</span>
+121:       <span class="ruby-comment cmt"># so peer can start sending us data!</span>
+122:       <span class="ruby-identifier">putsd</span> <span class="ruby-node">&quot;Starting #{@presence_broadcaster.class.to_s}&quot;</span>
+123:       <span class="ruby-ivar">@presence_broadcaster</span>.<span class="ruby-identifier">start</span>
+124:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="stop-method" class="method-detail ">
+				<a name="method-i-stop"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">stop</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="stop-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 127</span>
+127:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stop</span>
+128:       <span class="ruby-comment cmt"># Stop broadcasting presence.</span>
+129:       <span class="ruby-ivar">@presence_broadcaster</span>.<span class="ruby-identifier">stop</span>
+130:       <span class="ruby-comment cmt"># Stop listening for presence events, which prevents new peer registrations</span>
+131:       <span class="ruby-ivar">@presence_listener</span>.<span class="ruby-identifier">stop</span>
+132:       <span class="ruby-comment cmt"># Stop listening for incoming peer data.</span>
+133:       <span class="ruby-ivar">@peer_listener</span>.<span class="ruby-identifier">stop</span>
+134:       
+135:       <span class="ruby-comment cmt"># While the registry does not have its own thread, it is in charge of managing</span>
+136:       <span class="ruby-comment cmt"># +PeerConnection+s which DO have individual threads. This call</span>
+137:       <span class="ruby-comment cmt"># forcefully terminates all connections, which may or may not be actively passing data.</span>
+138: <span class="ruby-comment cmt">#      @peer_registry.unregister_all</span>
+139:       <span class="ruby-ivar">@peer_registry</span>.<span class="ruby-identifier">stop</span>
+140:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="unregister-peer-method" class="method-detail ">
+				<a name="method-i-unregister_peer"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">unregister_peer</span><span
+						class="method-args">(peer)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Forcefully unregisters the given #<a
+href="PeerConnection.html">PeerConnection</a>, though this is of limited
+use since the #<a href="PresenceListener.html">PresenceListener</a> will
+eventually automatically re-register the peers UUID if it&#8217;s still
+online.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="unregister-peer-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/journeta/journeta_engine.rb, line 190</span>
+190:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister_peer</span>(<span class="ruby-identifier">peer</span>)
+191:       <span class="ruby-identifier">peer_registry</span>.<span class="ruby-identifier">unregister</span>(<span class="ruby-identifier">peer</span>)
+192:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+
