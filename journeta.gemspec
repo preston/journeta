@@ -36,6 +36,7 @@ Gem::Specification.new do |s|
     "bin/journeta_top.rb",
     "broken/journeta_instant_messenger_gui.rb",
     "broken/journeta_instant_messenger_shoes.rb",
+    "journeta.gemspec",
     "lib/diff.rb",
     "lib/journeta.rb",
     "lib/journeta/asynchronous.rb",
