@@ -46,8 +46,3 @@ Preston Lee
 * http://www.prestonlee.com
 * https://www.github.com/preston
 * http://twitter.com/prestonism
-
-== Links
-
-How Journeta discovers peers using UDP multicasting..
-http://onestepback.org/index.cgi/Tech/Ruby/MulticastingInRuby.red
