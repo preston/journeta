@@ -3,7 +3,7 @@
 banner =<<EOL
 An IRC-like, serverless instant messenger for local area networks.
 Fire up one or more of these on your local network-connected machine.
-Copyright 2011, Preston Lee. http://prestonlee.com
+Copyright 2011-2016, Preston Lee. http://prestonlee.com
 
 	Usage: #{$0}
 
@@ -90,7 +90,7 @@ begin
       m.text = input
       journeta.send_to_known_peers(m)
     end
-  end  
+  end
 end
 
 

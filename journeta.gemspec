@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.licenses      = ["Apache 2.0"]
   spec.version       = Journeta::VERSION
 
-  spec.add_development_dependency 'curses', '>= 1.0.1'
-  spec.add_development_dependency 'bundler', '>= 1.7.3'
-  spec.add_development_dependency 'rake', '10.3.2'
+  spec.add_development_dependency 'curses', '>= 1.0.2'
+  spec.add_development_dependency 'bundler', '>= 1.12.5'
+  spec.add_development_dependency 'rake', '>= 11.2.2'
 end

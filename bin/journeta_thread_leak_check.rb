@@ -6,11 +6,14 @@ $LOAD_PATH.unshift lib_path
 require 'journeta'
 include Journeta
 
-#puts "Threads before start: #{Thread.count}"
+def thread_count
+	Thread.list.inject(0) {|i,n| n.status == 'run' ? (i+1) : i}.to_s
+end
+
+puts 'Threads before start: ' + thread_count
 
 j = Engine.new
 j.start
-sleep 10
+sleep 1 # Let it run very briefly.
 j.stop
-
-#puts "Threads after stop: #{Thread.count}"
+puts 'Threads after stop: ' + thread_count
