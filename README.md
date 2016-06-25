@@ -6,19 +6,16 @@
 Journeta is a dirt simple peer discovery and message passing library for processes on the same LAN,
 requiring no advanced networking knowledge to use.
 
-Only core Ruby libraries are required, making the library fairly light. As all data is sent across
-the wire in YAML form, any arbitrary Ruby object can be sent to peers, provided they..
+Only core Ruby libraries are required, making the library fairly light. As all data is sent across the wire in YAML form, any arbitrary Ruby object can be sent to peers, provided they:
 
- * Are running a compatible Journeta version.
- * Have access to the same class definitions if you are sending your own custom objects.
- * Do not have a firewall preventing network I/O.
+1. Are running a compatible Journeta version.
+1. Have access to the same class definitions if you are sending your own custom objects.
+1. Do not have a firewall preventing network I/O.
 
-Journeta uses Ruby threading to manage the asynchronous nature of peer-to-peer I/O.
-Data you send from your application thread will be queued and sent asynrchonously as soon as possible.
-For insight into events internal to the library, start ruby with the `--debug` options.
+Journeta uses Ruby threading to manage the asynchronous nature of peer-to-peer I/O. Data you send from your application thread will be queued and sent asynrchonously as soon as possible. For insight into events internal to the library, start ruby with the `--debug` options.
 
 
-## Use
+## Bundled Sample Code
 
 
 ### Instant Messenger
@@ -46,6 +43,7 @@ A simple queue managed by a server. Each client produces jobs to be queued, and 
 ## Author
 
 Preston Lee
-* http://www.prestonlee.com
+
+* https://www.leedoes.com
 * https://www.github.com/preston
 * http://twitter.com/prestonism
